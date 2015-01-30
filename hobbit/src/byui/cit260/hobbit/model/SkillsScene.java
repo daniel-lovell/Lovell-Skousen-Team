@@ -11,7 +11,7 @@ import java.io.Serializable;
  *
  * @author daniel
  */
-public class SkillsScene implements Serializable {
+public class SkillsScene extends Scene implements Serializable {
 
     public SkillsScene() {
     }

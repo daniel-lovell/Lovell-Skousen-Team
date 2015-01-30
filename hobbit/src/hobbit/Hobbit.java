@@ -68,6 +68,14 @@ public class Hobbit {
         String locationInfo = location.toString();
         System.out.println(locationInfo);
         
+        //Test SupplyScene Class
+        SupplyScene supplyScene = new SupplyScene();
+        
+        SupplyScene.description('Supply Scene Description');
+        
+        String locationInfo = SupplyScene.toString();
+        System.out.println(locationInfo);
+        
     }
     
 }

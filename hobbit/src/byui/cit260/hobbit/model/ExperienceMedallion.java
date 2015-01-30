@@ -11,7 +11,7 @@ import java.io.Serializable;
  *
  * @author daniel
  */
-public class ExperienceMedallion implements Serializable {
+public class ExperienceMedallion extends InventoryItem implements Serializable {
     private int amountAttack;
     private int maxAmountAttack;
     private int amountDefend;
@@ -59,11 +59,11 @@ public class ExperienceMedallion implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 97 * hash + this.amountAttack;
-        hash = 97 * hash + this.maxAmountAttack;
-        hash = 97 * hash + this.amountDefend;
-        hash = 97 * hash + this.maxAmountDefend;
+        int hash = 5;
+        hash = 23 * hash + this.amountAttack;
+        hash = 23 * hash + this.maxAmountAttack;
+        hash = 23 * hash + this.amountDefend;
+        hash = 23 * hash + this.maxAmountDefend;
         return hash;
     }
 
@@ -90,7 +90,6 @@ public class ExperienceMedallion implements Serializable {
         }
         return true;
     }
-    
-    
+
     
 }

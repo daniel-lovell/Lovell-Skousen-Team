@@ -11,7 +11,7 @@ import java.io.Serializable;
  *
  * @author daniel
  */
-public class SupplyScene implements Serializable {
+public class SupplyScene extends Scene implements Serializable {
 
     public SupplyScene() {
     }
