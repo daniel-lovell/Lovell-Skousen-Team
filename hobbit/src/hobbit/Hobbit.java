@@ -8,8 +8,14 @@ package hobbit;
 import byui.cit260.hobbit.model.Player;
 import byui.cit260.hobbit.model.Game;
 import byui.cit260.hobbit.model.Dragon;
+import byui.cit260.hobbit.model.DragonScene;
 import byui.cit260.hobbit.model.ExperienceMedallion;
+import byui.cit260.hobbit.model.GoldPouch;
+import byui.cit260.hobbit.model.GoldScene;
 import byui.cit260.hobbit.model.Location;
+import byui.cit260.hobbit.model.Map;
+import byui.cit260.hobbit.model.Scene;
+import byui.cit260.hobbit.model.SupplyScene;
 
 /**
  *
@@ -68,14 +74,55 @@ public class Hobbit {
         String locationInfo = location.toString();
         System.out.println(locationInfo);
         
+        // Test scene class
+        Scene scene = new Scene();
+        
+        scene.setDescription("Main scene description");
+        
+        String sceneInfo = scene.toString();
+        System.out.println(sceneInfo);
+        
         //Test SupplyScene Class
         SupplyScene supplyScene = new SupplyScene();
         
-        SupplyScene.description('Supply Scene Description');
+        supplyScene.setDescription("Supply Scene Description");
         
-        String locationInfo = SupplyScene.toString();
-        System.out.println(locationInfo);
+        String supplySceneInfo = supplyScene.toString();
+        System.out.println(supplySceneInfo);
         
+        //Test DragonScene Class
+        DragonScene dragonScene = new DragonScene();
+        
+        dragonScene.setDescription("Dragon Scene Description");
+        
+        String dragonSceneInfo = dragonScene.toString();
+        System.out.println(dragonSceneInfo);
+
+        //Test GoldScene Class
+        GoldScene goldScene = new GoldScene();
+        
+        goldScene.setDescription("Gold Scene Description");
+        
+        String goldSceneInfo = goldScene.toString();
+        System.out.println(goldSceneInfo);
+        
+        //Test Map Class
+        Map map = new Map();
+        
+        map.setRowCount(3);
+        map.setColumnCount(3);
+        
+        String mapInfo = map.toString();
+        System.out.println(mapInfo);
+        
+        //Test GoldPouch Class
+        GoldPouch goldPouch = new GoldPouch();
+        
+        goldPouch.setAmount(2);
+        goldPouch.setMaxAmount(10);
+        
+        String goldPouchInfo = goldPouch.toString();
+        System.out.println(goldPouchInfo);
     }
     
 }
