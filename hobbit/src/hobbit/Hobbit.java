@@ -16,6 +16,7 @@ import byui.cit260.hobbit.model.Location;
 import byui.cit260.hobbit.model.Map;
 import byui.cit260.hobbit.model.Scene;
 import byui.cit260.hobbit.model.SupplyScene;
+import byui.cit260.hobbit.view.StartProgramView;
 
 /**
  *
@@ -26,7 +27,10 @@ public class Hobbit {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) {    
+        
+        StartProgramView startProgramView = new StartProgramView();
+        startProgramView.startProgram();
         
         //Test Player Class
         Player player = new Player();
