@@ -23,15 +23,18 @@ import byui.cit260.hobbit.view.StartProgramView;
  * @author Brendan
  */
 public class Hobbit {
+    
+    private static Game currentGame = null;
+    private static Player player = null;
 
-    /**
-     * @param args the command line arguments
-     */
+   
     public static void main(String[] args) {    
         
         StartProgramView startProgramView = new StartProgramView();
         startProgramView.startProgram();
         
+        
+        /*
         //Test Player Class
         Player player = new Player();
         
@@ -127,6 +130,23 @@ public class Hobbit {
         
         String goldPouchInfo = goldPouch.toString();
         System.out.println(goldPouchInfo);
+                */
+    }
+
+    public static Game getCurrentGame() {
+        return currentGame;
+    }
+
+    public static void setCurrentGame(Game currentGame) {
+        Hobbit.currentGame = currentGame;
+    }
+
+    public static Player getPlayer() {
+        return player;
+    }
+
+    public static void setPlayer(Player player) {
+        Hobbit.player = player;
     }
     
 }

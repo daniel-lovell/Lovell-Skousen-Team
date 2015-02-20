@@ -33,10 +33,15 @@ public void startProgram() {
 //DISPLAY the main menu 
     String playersName = this.getPlayersName();
     
-   Player player = GameControl.createPlayer(playersName);
+    Player player = GameControl.createPlayer(playersName);
    
-           this.displayWelcomeMessage(player);
-           }
+    this.displayWelcomeMessage(player);
+           
+    MainMenuView mainMenu = new MainMenuView();
+    mainMenu.displayMenu();
+    
+    
+}
 
     private String getPlayersName() {
         boolean valid = false;              /*indicates if the name has been retrieved*/
