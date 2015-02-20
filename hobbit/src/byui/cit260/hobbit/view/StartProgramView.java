@@ -1,6 +1,8 @@
 
 package byui.cit260.hobbit.view;
 
+import byui.cit260.hobbit.control.GameControl;
+import byui.cit260.hobbit.model.Player;
 import java.util.Scanner;
 
 
@@ -30,7 +32,11 @@ public void startProgram() {
 //DISPLAY a customized welcome message
 //DISPLAY the main menu 
     String playersName = this.getPlayersName();
-}
+    
+   Player player = GameControl.createPlayer(playersName);
+   
+           this.displayWelcomeMessage(player);
+           }
 
     private String getPlayersName() {
         boolean valid = false;              /*indicates if the name has been retrieved*/
@@ -50,6 +56,13 @@ public void startProgram() {
             break;
         }
         return playersName;    
+    }
+
+    private void displayWelcomeMessage(Player player) {
+        System.out.println("\n\n======================");
+        System.out.println("\t Welcome to the Hobbit game " + player.getName());
+        System.out.println("\t Let your adventure begin!");
+        System.out.println("====================");
     }
 
 }
