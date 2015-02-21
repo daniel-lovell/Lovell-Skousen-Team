@@ -7,48 +7,48 @@ import java.util.Scanner;
 
 
 public class StartProgramView {
-
+    
+    //Function that controls the start of the program
+    public void startProgram() {
+        //Display the banner screen
+        this.displayBanner();
+        
+        //Display a customized welcome message
+        String playersName = this.getPlayersName();
+        Player player = ProgramControl.createPlayer(playersName);
+        this.displayWelcomeMessage(player);
+        
+        //DISPLAY the main menu
+        //Why are we calling the main menu here?
+        //We don't need this object after the welcome screen.
+        //Can we just add the next lines to the main function and let this object die?
+        MainMenuView mainMenu = new MainMenuView();
+        mainMenu.displayMenu();
+    }
+    
+    //Displays the welcome banner when program is started
     private void displayBanner() {
         System.out.println("\n\n*********************************************************"); 
         System.out.println("*                                                       *"
-                + "\n* This game is called Hobbit                            *"
+                + "\n* Welcome to Hobbit!                                    *"
                 + "\n* In this game, you will accompany a little hobbit      *"
                 + "\n* on his journey in order to defeat the evil dragon.    *");
-
         System.out.println("*                                                       *"
                 + "\n* Through your jounrey, you will dig for gold, in order *"
-                + "\n* to afford armour and weapons to defeat the dragon.    *");
+                + "\n* to buy a shield and weapons to defeat the dragon.     *");
         System.out.println("*                                                       *"
                 + "\n* Go forth adventurers and conquer the dragon!          *"
                 + "\n*                                                       *");
-
         System.out.println("*********************************************************");
-      
     }
         
-public void startProgram() {
-    this.displayBanner();
-//Display the banner screen
-//DISPLAY a customized welcome message
-//DISPLAY the main menu 
-    String playersName = this.getPlayersName();
-    
-    Player player = ProgramControl.createPlayer(playersName);
-   
-    this.displayWelcomeMessage(player);
-           
-    MainMenuView mainMenu = new MainMenuView();
-    mainMenu.displayMenu();
-    
-    
-}
-
+    //gets and returns the player's name
     private String getPlayersName() {
-        boolean valid = false;              /*indicates if the name has been retrieved*/
-        String playersName = null;
+        boolean valid = false;      //indicates if the name has been retrieved
+        String playersName = null;  //holds player's name
         Scanner keyboard = new Scanner(System.in);
         
-        while(!valid) {
+        while(!valid) { //Why check valid? It isn't modified anywhere. See comments below. -DL
             System.out.println("Enter the player's name below:");
             
             playersName = keyboard.nextLine();
@@ -56,16 +56,17 @@ public void startProgram() {
             
             if (playersName.length()<2){
                 System.out.println("Invalid name - player name must be longer than one character");
-                continue;
+                continue; //Could we use valid = true instead? -DL
             }
-            break;
+            break; //If we used valid = true in the if statement above, would we need this? -DL
         }
         return playersName;    
     }
 
+    //Display customized welcome message
     private void displayWelcomeMessage(Player player) {
         System.out.println("\n\n======================");
-        System.out.println("\t Welcome to the Hobbit game " + player.getName());
+        System.out.println("\t Welcome to Hobbit " + player.getName());
         System.out.println("\t Let your adventure begin!");
         System.out.println("====================");
     }
