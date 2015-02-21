@@ -2,22 +2,10 @@
 package byui.cit260.hobbit.control;
 
 import byui.cit260.hobbit.model.Player;
-import hobbit.Hobbit;
 
 
 public class GameControl {
-
-    public static Player createPlayer(String playersName) {
-        
-        if (playersName == null) {
-            return null;
-        }
-        
-        Player player = new Player();
-        player.setName(playersName);
-        
-        Hobbit.setPlayer(player);
-        
-        return player;
+    public static void createNewGame(Player player){
+        System.out.println("\n*** createNewGame stub function called ***");
     }
 }

@@ -1,16 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package byui.cit260.hobbit.view;
 
+import byui.cit260.hobbit.control.GameControl;
+import hobbit.Hobbit;
 import java.util.Scanner;
 
-/**
- *
- * @author daniel
- */
+
 public class MainMenuView {
 
     private final String MENU = "\n"
@@ -18,8 +13,9 @@ public class MainMenuView {
             + "\n| Main Menu                                         |"
             + "\n-----------------------------------------------------"
             + "\nG - Start Game"
-            + "\nH - Get help on how to play the game"
+            + "\nN - New Game"
             + "\nS - Save game"
+            + "\nH - Get help on how to play the game"
             + "\nE - Exit"
             + "\n-----------------------------------------------------";
     
@@ -52,7 +48,8 @@ public class MainMenuView {
             if (!"G".equals(selection)
                     && !"H".equals(selection)
                     && !"S".equals(selection)
-                    && !"E".equals(selection)){
+                    && !"E".equals(selection)
+                    && !"N".equals(selection)){
                 System.out.println("Invalid Selection - Try again.");
                 continue;
             }
@@ -84,15 +81,22 @@ public class MainMenuView {
     }
 
     private void startNewGame() {
-        System.out.println("*** startNewGame function called ***");
+        GameControl.createNewGame(Hobbit.getPlayer());
+        
+        //display the game menu
+        GameMenuView gameMenu = new GameMenuView();
+        gameMenu.displayMenu();
+        
     }
 
     private void startExistingGame() {
         System.out.println("*** startExistingGame function called ***");    }
 
     private void displayHelpMenu() {
-        System.out.println("*** displayHelpMenu function called ***");    }
-
+        HelpMenuView helpMenu = new HelpMenuView();
+        helpMenu.displayHelp();
+    }
+   
     private void saveGame() {
         System.out.println("*** saveGame function called ***");    }
     

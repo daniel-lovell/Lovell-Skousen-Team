@@ -1,7 +1,7 @@
 
 package byui.cit260.hobbit.view;
 
-import byui.cit260.hobbit.control.GameControl;
+import byui.cit260.hobbit.control.ProgramControl;
 import byui.cit260.hobbit.model.Player;
 import java.util.Scanner;
 
@@ -33,7 +33,7 @@ public void startProgram() {
 //DISPLAY the main menu 
     String playersName = this.getPlayersName();
     
-    Player player = GameControl.createPlayer(playersName);
+    Player player = ProgramControl.createPlayer(playersName);
    
     this.displayWelcomeMessage(player);
            
