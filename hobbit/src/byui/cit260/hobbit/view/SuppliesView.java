@@ -73,13 +73,16 @@ public class SuppliesView {
        private void doAction(char choice) {
         switch (choice) {
             case 'S': // obtain sword.
-                System.out.println(SWORD);
+                this.obtainSword();
+                //System.out.println(SWORD);
                 break;
             case 'D': // obtain shield
-                System.out.println(SHIELD);
+                this.obtainShield();
+                //System.out.println(SHIELD);
                 break;
             case 'G': // obtain gold pouch
-                System.out.println(GOLDPOUCH);
+                this.obtainGoldPouch();
+                //System.out.println(GOLDPOUCH);
                 break;
             case 'E': // Exit the store
                 return;
@@ -89,4 +92,17 @@ public class SuppliesView {
             }
    
     }
-}
+
+    private void obtainSword() {
+        System.out.println("*** obtainSword function called ***");    
+        }
+
+    private void obtainShield() {
+        System.out.println("*** obtainShield function called ***");
+        }
+
+    private void obtainGoldPouch() {
+        System.out.println("*** obtainGoldPouch function called ***");
+        }
+
+    }
