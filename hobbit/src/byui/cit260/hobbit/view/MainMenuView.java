@@ -15,7 +15,8 @@ public class MainMenuView {
             + "\nG - Start Game"
             + "\nN - New Game"
             + "\nS - Save game"
-            + "\nH - Get help on how to play the game"
+            + "\nH - Help"
+            + "\nB - Store"
             + "\nE - Exit"
             + "\n-----------------------------------------------------";
     
@@ -47,6 +48,7 @@ public class MainMenuView {
             
             if (!"G".equals(selection)
                     && !"H".equals(selection)
+                    && !"B".equals(selection)
                     && !"S".equals(selection)
                     && !"E".equals(selection)
                     && !"N".equals(selection)){
@@ -71,6 +73,9 @@ public class MainMenuView {
                 break;
             case 'S': // save the current game
                 this.saveGame();
+                break;
+            case 'B': // save the current game
+                this.displayStore();
                 break;
             case 'E': // Exit the game
                 return;
@@ -99,5 +104,10 @@ public class MainMenuView {
    
     private void saveGame() {
         System.out.println("*** saveGame function called ***");    }
+
+    private void displayStore() {
+        SuppliesView suppliesStore = new SuppliesView();
+        suppliesStore.displayStore();
+    }
     
 }

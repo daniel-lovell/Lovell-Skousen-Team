@@ -90,7 +90,7 @@ public class HelpMenuView {
 
     private void doAction(char choice) {
         switch (choice) {
-            case 'G': // get objective
+            case 'G': // get objective.
                 System.out.println(OBJECTIVE);
                 break;
             case 'D': // obtaining gold
