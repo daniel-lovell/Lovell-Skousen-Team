@@ -13,9 +13,11 @@ public class StartProgramView {
         //Display the banner screen
         this.displayBanner();
         
-        //Display a customized welcome message
+        //Create a new player object
         String playersName = this.getPlayersName();
         Player player = ProgramControl.createPlayer(playersName);
+        
+        //Display a customized welcome message
         this.displayWelcomeMessage(player);
         
         //DISPLAY the main menu
