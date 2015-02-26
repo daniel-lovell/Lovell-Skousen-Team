@@ -8,14 +8,11 @@ package hobbit;
 import byui.cit260.hobbit.model.Player;
 import byui.cit260.hobbit.model.Game;
 import byui.cit260.hobbit.model.Dragon;
-import byui.cit260.hobbit.model.DragonScene;
 import byui.cit260.hobbit.model.ExperienceMedallion;
 import byui.cit260.hobbit.model.GoldPouch;
-import byui.cit260.hobbit.model.GoldScene;
 import byui.cit260.hobbit.model.Location;
 import byui.cit260.hobbit.model.Map;
 import byui.cit260.hobbit.model.Scene;
-import byui.cit260.hobbit.model.SupplyScene;
 import byui.cit260.hobbit.view.StartProgramView;
 
 /**
@@ -26,6 +23,7 @@ public class Hobbit {
     
     private static Game currentGame = null;
     private static Player player = null;
+    private static GoldPouch goldPouch = null;
 
    
     public static void main(String[] args) {    
@@ -148,5 +146,16 @@ public class Hobbit {
     public static void setPlayer(Player player) {
         Hobbit.player = player;
     }
+
+    public static GoldPouch getGoldPouch() {
+        return goldPouch;
+    }
+
+    public static void setGoldPouch(GoldPouch goldPouch) {
+        Hobbit.goldPouch = goldPouch;
+    }
+    
+    
+    
     
 }

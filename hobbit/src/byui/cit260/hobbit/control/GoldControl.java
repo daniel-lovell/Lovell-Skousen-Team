@@ -32,4 +32,9 @@ public class GoldControl {
         }
         return newGold;
     }
+
+    public static boolean pouchFull(GoldPouch goldPouch) {
+        
+        return goldPouch.getAmount() / goldPouch.getMaxAmount() >= 1;
+    }
 }

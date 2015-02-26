@@ -16,6 +16,8 @@ public class MainMenuView {
             + "\nN - New Game"
             + "\nS - Save game"
             + "\nH - Help"
+            + "\nD - Dragon"
+            + "\nO - Gold"
             + "\nB - Store"
             + "\nE - Exit"
             + "\n-----------------------------------------------------";
@@ -50,6 +52,8 @@ public class MainMenuView {
                     && !"H".equals(selection)
                     && !"B".equals(selection)
                     && !"S".equals(selection)
+                    && !"D".equals(selection)
+                    && !"O".equals(selection)
                     && !"E".equals(selection)
                     && !"N".equals(selection)){
                 System.out.println("Invalid Selection - Try again.");
@@ -76,6 +80,12 @@ public class MainMenuView {
                 break;
             case 'B': // save the current game
                 this.displayStore();
+                break;
+            case 'D': // save the current game
+                this.displayDragon();
+                break;
+            case 'O': // save the current game
+                this.displayGold();
                 break;
             case 'E': // Exit the game
                 return;
@@ -108,6 +118,17 @@ public class MainMenuView {
     private void displayStore() {
         SuppliesView suppliesStore = new SuppliesView();
         suppliesStore.displayStore();
+    }
+
+    private void displayDragon() {
+        DragonView dragonView = new DragonView();
+        dragonView.display();
+    }
+
+    private void displayGold() {
+        GoldView goldView = new GoldView();
+        goldView.displayMenu();
+
     }
     
 }

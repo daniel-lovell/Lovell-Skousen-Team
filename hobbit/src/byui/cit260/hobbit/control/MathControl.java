@@ -88,6 +88,30 @@ public class MathControl {
         return problem;
     }
     
+    public String makeMathRandom() {
+        String problem = null;
+        
+        //Randomly select operator
+        char[] ops = {'+', '-', '*', '/'};
+        Random rand = new Random();
+        char op = ops[rand.nextInt(4)];
+        
+        //Updates operation type
+        this.operator = op;
+        
+        //Decides which type of operation to make
+        switch (this.operator) {
+            case '+': makeAdd(); break;
+            case '-': makeSubtract(); break;
+            case '*': makeMultiply(); break;
+            case '/': makeDivide(); break;
+        }
+        
+        //Return created problem as String
+        problem = this.operand1 + " " + this.operator + " " + this.operand2 + " = ?";
+        return problem;
+    }
+    
     public boolean verifyMath(String userAnswer) {
         
         return userAnswer.equals(this.answer);
