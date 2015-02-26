@@ -40,8 +40,8 @@ public class DragonControl {
         dragon.setLifePoints(10);
     }
 
-    public static void defenseFailed() {
-        System.out.println("Defense Failed");
+    public static void defenseFailed(Player player) {
+        player.setLifePoints(player.getLifePoints() - 1);
     }
 
     public static boolean alive(Player player, Dragon dragon) {
@@ -60,11 +60,8 @@ public class DragonControl {
         }
     }
 
-    public static void attackWorked(int lastAttackStrength) {
-        System.out.println("Attack Worked");
+    public static void attackWorked(int attackStrength, Dragon dragon) {
+        dragon.setLifePoints(dragon.getLifePoints() - attackStrength);
     }
 
-    public static void attackFailed() {
-        System.out.println("Attack Failed");
-    }
 }

@@ -91,13 +91,13 @@ public class DragonView {
             
             //Verify Answer
             if (!math.verifyMath(userAnswer)) {
-                this.doActionDefenseFailed();
+                this.doActionDefenseFailed(player);
             }
             
         }
         if (DragonControl.alive(player, dragon)) { //Attack
             int countCorrect = 0;
-            int lastAttackStrength = 1;
+            int lastAttackStrength = 0;
             do {
                 //Display story
                 System.out.println(ATTACK);
@@ -110,7 +110,7 @@ public class DragonView {
                 //Verify Answer
                 if (math.verifyMath(userAnswer)) {
                     countCorrect++;
-                    lastAttackStrength = this.doActionAttackWorked(lastAttackStrength, countCorrect);
+                    lastAttackStrength = this.doActionAttackWorked(lastAttackStrength, countCorrect, dragon);
                     
                 } else {
                     this.doActionAttackFailed();
@@ -118,7 +118,7 @@ public class DragonView {
                     lastAttackStrength = 0;
                 }
                 
-            } while (countCorrect > 0);
+            } while (countCorrect > 0 && DragonControl.alive(player, dragon));
         }
     }
 
@@ -138,17 +138,21 @@ public class DragonView {
         return selection;
     }
 
-    private void doActionDefenseFailed() {
-        DragonControl.defenseFailed();
+    private void doActionDefenseFailed(Player player) {
+        DragonControl.defenseFailed(player);
+        System.out.println("Defense Failed");
     }
 
-    private int doActionAttackWorked(int lastAttackStrength, int countCorrect) {
-        DragonControl.attackWorked(lastAttackStrength);
-        return DragonControl.calculateAttackStrength(lastAttackStrength, countCorrect);
+    private int doActionAttackWorked(int lastAttackStrength, int countCorrect, Dragon dragon) {
+        int attackStrength = DragonControl.calculateAttackStrength(lastAttackStrength, countCorrect);
+        DragonControl.attackWorked(attackStrength, dragon);
+        System.out.println("Attack Succeeded!");
+        
+        return attackStrength;
     }
 
     private void doActionAttackFailed() {
-        DragonControl.attackFailed();
+        System.out.println("Attack Failed");
     }
 
 
