@@ -9,6 +9,7 @@ import byui.cit260.hobbit.model.Player;
 import byui.cit260.hobbit.model.Game;
 import byui.cit260.hobbit.model.Dragon;
 import byui.cit260.hobbit.model.GoldPouch;
+import byui.cit260.hobbit.model.InventoryItem;
 import byui.cit260.hobbit.model.Location;
 import byui.cit260.hobbit.model.Map;
 import byui.cit260.hobbit.model.Scene;
@@ -23,7 +24,9 @@ public class Hobbit {
     private static Game currentGame = null;
     private static Player player = null;
     private static GoldPouch goldPouch = null;
-
+ 
+    private static InventoryItem sword = null;
+    private static InventoryItem shield = null;
    
     public static void main(String[] args) {    
         
@@ -152,6 +155,22 @@ public class Hobbit {
 
     public static void setGoldPouch(GoldPouch goldPouch) {
         Hobbit.goldPouch = goldPouch;
+    }
+
+    public static InventoryItem getSword() {
+        return sword;
+    }
+
+    public static void setSword(InventoryItem sword) {
+        Hobbit.sword = sword;
+    }
+
+    public static InventoryItem getShield() {
+        return shield;
+    }
+
+    public static void setShield(InventoryItem shield) {
+        Hobbit.shield = shield;
     }
     
     

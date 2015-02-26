@@ -5,10 +5,16 @@
  */
 package byui.cit260.hobbit.control;
 
+import byui.cit260.hobbit.model.InventoryItem;
+
 /**
  *
  * @author daniel
  */
 public class SkillsControl {
+
+    public static boolean skillMAX(InventoryItem sword) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }
