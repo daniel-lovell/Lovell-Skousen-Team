@@ -8,7 +8,6 @@ package hobbit;
 import byui.cit260.hobbit.model.Player;
 import byui.cit260.hobbit.model.Game;
 import byui.cit260.hobbit.model.Dragon;
-import byui.cit260.hobbit.model.ExperienceMedallion;
 import byui.cit260.hobbit.model.GoldPouch;
 import byui.cit260.hobbit.model.Location;
 import byui.cit260.hobbit.model.Map;

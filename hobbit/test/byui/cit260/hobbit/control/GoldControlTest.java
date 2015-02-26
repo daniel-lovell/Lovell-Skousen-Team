@@ -25,61 +25,51 @@ public class GoldControlTest {
     public void testCalculateNewGold() {
         
         //Test Case 1
-        System.out.println("calculateNewGold");
-        //GoldPouch goldPouch = null;
-        GoldPouch goldPouch1 = new GoldPouch();
-        goldPouch1.setAmount(1);
-        short countCorrect1 = 2;
+        System.out.println("calculateNewGold1");
+        int lastGoldEarned1 = 1;
+        int countCorrect1 = 2;
         int expResult1 = 4;
-        int result1 = GoldControl.calculateNewGold(goldPouch1, countCorrect1);
+        int result1 = GoldControl.calculateEarnedGold(lastGoldEarned1, countCorrect1);
         assertEquals(expResult1, result1);
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
         
         //Test Case 2
-        System.out.println("calculateNewGold");
-        //GoldPouch goldPouch = null;
-        GoldPouch goldPouch2 = new GoldPouch();
-        goldPouch2.setAmount(-1);
-        short countCorrect2 = 3;
+        System.out.println("calculateNewGold2");
+        int lastGoldEarned2 = -1;
+        int countCorrect2 = 3;
         int expResult2 = -1;
-        int result2 = GoldControl.calculateNewGold(goldPouch2, countCorrect2);
+        int result2 = GoldControl.calculateEarnedGold(lastGoldEarned2, countCorrect2);
         assertEquals(expResult2, result2);
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
         
         //Test Case 3
-        System.out.println("calculateNewGold");
-        //GoldPouch goldPouch = null;
-        GoldPouch goldPouch3 = new GoldPouch();
-        goldPouch3.setAmount(3);
-        short countCorrect3 = -1;
+        System.out.println("calculateNewGold3");
+        int lastGoldEarned3 = 3;
+        int countCorrect3 = -1;
         int expResult3 = -1;
-        int result3 = GoldControl.calculateNewGold(goldPouch3, countCorrect3);
+        int result3 = GoldControl.calculateEarnedGold(lastGoldEarned3, countCorrect3);
         assertEquals(expResult1, result1);
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
         
         //Test Case 4
-        System.out.println("calculateNewGold");
-        //GoldPouch goldPouch = null;
-        GoldPouch goldPouch4 = new GoldPouch();
-        goldPouch4.setAmount(-1);
-        short countCorrect4 = -1;
+        System.out.println("calculateNewGold4");
+        int lastGoldEarned4 = -1;
+        int countCorrect4 = -1;
         int expResult4 = -1;
-        int result4 = GoldControl.calculateNewGold(goldPouch4, countCorrect4);
+        int result4 = GoldControl.calculateEarnedGold(lastGoldEarned4, countCorrect4);
         assertEquals(expResult4, result4);
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
         
         //Test Case 5
-        System.out.println("calculateNewGold");
-        //GoldPouch goldPouch = null;
-        GoldPouch goldPouch5 = new GoldPouch();
-        goldPouch5.setAmount(0);
-        short countCorrect5 = 1;
+        System.out.println("calculateNewGold5");
+        int lastGoldEarned5 = 0;
+        int countCorrect5 = 1;
         int expResult5 = 1;
-        int result5 = GoldControl.calculateNewGold(goldPouch5, countCorrect5);
+        int result5 = GoldControl.calculateEarnedGold(lastGoldEarned5, countCorrect5);
         assertEquals(expResult5, result5);
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");

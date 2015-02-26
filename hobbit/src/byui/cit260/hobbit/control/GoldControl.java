@@ -6,15 +6,28 @@
 package byui.cit260.hobbit.control;
 
 import byui.cit260.hobbit.model.GoldPouch;
+import hobbit.Hobbit;
 
 /**
  *
  * @author daniel
  */
 public class GoldControl {
-    public static int calculateNewGold(GoldPouch goldPouch, short countCorrect) {
+    
+    public static int correctAnswer(int countCorrect, int lastGoldEarned) {
+        GoldPouch goldPouch = Hobbit.getGoldPouch();
+        int newGold = 0;
+        int newGoldEarned = 0;
+        //Add Calculated Gold to GoldPouch
+        newGoldEarned = calculateEarnedGold(lastGoldEarned, countCorrect);
+        newGold = goldPouch.getAmount() + newGoldEarned;
+        goldPouch.setAmount(newGold);
+        return newGoldEarned;
+    }
+    
+    public static int calculateEarnedGold(int lastGoldEarned, int countCorrect) {
         
-        if (goldPouch.getAmount() < 0) {
+        if (lastGoldEarned < 0) {
             return -1;
         }
         
@@ -22,19 +35,19 @@ public class GoldControl {
             return -1;
         }
 
-        int gold = goldPouch.getAmount();
-        int newGold = 0;
+        int earnedGold = 0;
 
         if (countCorrect > 1) {
-            newGold = (gold + 1) * 2;
+            earnedGold = (lastGoldEarned + 1) * 2;
         } else {
-            newGold = gold + 1;
+            earnedGold = lastGoldEarned + 1;
         }
-        return newGold;
+        return earnedGold;
     }
 
     public static boolean pouchFull(GoldPouch goldPouch) {
         
         return goldPouch.getAmount() / goldPouch.getMaxAmount() >= 1;
     }
+   
 }

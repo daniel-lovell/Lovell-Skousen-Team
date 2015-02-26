@@ -6,6 +6,8 @@
 package byui.cit260.hobbit.view;
 
 import byui.cit260.hobbit.control.GoldControl;
+import byui.cit260.hobbit.control.MathControl;
+import byui.cit260.hobbit.model.GoldPouch;
 import hobbit.Hobbit;
 import java.util.Scanner;
 
@@ -35,10 +37,13 @@ public class GoldView {
     
     void displayMenu() {
         
+        GoldPouch goldPouch = Hobbit.getGoldPouch();
         char selection = ' ';
         do {
-            if (GoldControl.pouchFull(Hobbit.getGoldPouch())) {
+            if (GoldControl.pouchFull(goldPouch)) {
                 System.out.println(FULL); //Display the full menu
+                selection = 'E';
+                break;
             }
             System.out.println(MENU); //DISPLAY the Gold Menu
 
@@ -52,7 +57,7 @@ public class GoldView {
     }
     
     private String getInput() {
-        boolean valid = false;              /*indicates if the name has been retrieved*/
+        boolean valid = false;
         String selection = null;
         Scanner keyboard = new Scanner(System.in);
         
@@ -78,16 +83,16 @@ public class GoldView {
     private void doAction(char choice) {
         switch (choice) {
             case 'A': // create and start a new game
-                this.addition();
+                this.doMath("+");
                 break;
             case 'S': // get and start and existing game
-                this.subtraction();
+                this.doMath("-");
                 break;
             case 'M': // display the help menu
-                this.multiplication();
+                this.doMath("*");
                 break;
             case 'D': // save the current game
-                this.division();
+                this.doMath("/");
                 break;
             case 'E': // Leave the Gold Mines
                 return;
@@ -97,20 +102,70 @@ public class GoldView {
         }
     }
 
-    private void addition() {
-        System.out.println("*** Addition Selected ***");
+    private void doMath(String operator) {
+
+        int countCorrect = 0;
+        int lastGoldEarned = 0;
+        boolean userContinue = false;
+        
+        do {
+            //Display Math
+            MathControl math = new MathControl();
+            System.out.println(math.makeMath(operator));
+
+            //Get Input
+            String userAnswer = this.getMathInput();
+
+            //Do Action
+            if (math.verifyMath(userAnswer)) {
+                countCorrect++;
+                lastGoldEarned = GoldControl.correctAnswer(countCorrect, lastGoldEarned);
+            } else {
+                System.out.println("\nWrong Answer");
+                countCorrect = 0;
+                lastGoldEarned = 0;
+            }
+
+            //Does user want to continue?
+            userContinue = this.getContinueInput();
+
+        } while (userContinue);
+    }
+    
+    private String getMathInput() {
+        boolean valid = false;
+        String selection = null;
+        Scanner keyboard = new Scanner(System.in);
+        
+        while(!valid) {
+            //System.out.println("Enter the player's name below:");
+            
+            selection = keyboard.nextLine();
+            selection = selection.trim();
+            
+            break;
+        }
+        return selection;
     }
 
-    private void subtraction() {
-        System.out.println("*** Subtraction Selected ***");
-    }
-
-    private void multiplication() {
-        System.out.println("*** Multiplication Selected ***");
-    }
-
-    private void division() {
-        System.out.println("*** Division Selected ***");
+    private boolean getContinueInput() {
+        boolean valid = false;
+        String selection = null;
+        Scanner keyboard = new Scanner(System.in);
+        
+        while(!valid) {
+            System.out.println("Do you want to continue? (Y/N)");
+            
+            selection = keyboard.nextLine();
+            selection = selection.trim();
+            
+            if (!"Y".equals(selection) && !"N".equals(selection)){
+                System.out.println("Invalid Selection - Try again.");
+                continue;
+            }
+            break;
+        }
+        return "Y".equals(selection);
     }
         
         

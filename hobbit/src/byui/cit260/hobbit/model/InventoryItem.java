@@ -6,6 +6,7 @@
 package byui.cit260.hobbit.model;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  *
@@ -13,17 +14,18 @@ import java.io.Serializable;
  */
 public class InventoryItem implements Serializable {
     
-    private char inventoryType;
+    private String inventoryType;
     private int requiredCost;
+    private int experiencePoints;
 
     public InventoryItem() {
     }
 
-    public char getInventoryType() {
+    public String getInventoryType() {
         return inventoryType;
     }
 
-    public void setInventoryType(char inventoryType) {
+    public void setInventoryType(String inventoryType) {
         this.inventoryType = inventoryType;
     }
 
@@ -35,16 +37,25 @@ public class InventoryItem implements Serializable {
         this.requiredCost = requiredCost;
     }
 
+    public int getExperiencePoints() {
+        return experiencePoints;
+    }
+
+    public void setExperiencePoints(int experiencePoints) {
+        this.experiencePoints = experiencePoints;
+    }
+
     @Override
     public String toString() {
-        return "InventoryItem{" + "inventoryType=" + inventoryType + ", requiredCost=" + requiredCost + '}';
+        return "InventoryItem{" + "inventoryType=" + inventoryType + ", requiredCost=" + requiredCost + ", experiencePoints=" + experiencePoints + '}';
     }
 
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 89 * hash + this.inventoryType;
-        hash = 89 * hash + this.requiredCost;
+        hash = 31 * hash + Objects.hashCode(this.inventoryType);
+        hash = 31 * hash + this.requiredCost;
+        hash = 31 * hash + this.experiencePoints;
         return hash;
     }
 
@@ -57,14 +68,17 @@ public class InventoryItem implements Serializable {
             return false;
         }
         final InventoryItem other = (InventoryItem) obj;
-        if (this.inventoryType != other.inventoryType) {
+        if (!Objects.equals(this.inventoryType, other.inventoryType)) {
             return false;
         }
         if (this.requiredCost != other.requiredCost) {
             return false;
         }
+        if (this.experiencePoints != other.experiencePoints) {
+            return false;
+        }
         return true;
     }
-    
-    
+
+
 }
