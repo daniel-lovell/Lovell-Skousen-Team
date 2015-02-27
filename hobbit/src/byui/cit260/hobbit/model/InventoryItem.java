@@ -15,7 +15,6 @@ import java.util.Objects;
 public class InventoryItem implements Serializable {
     
     private String inventoryType;
-    private int requiredCost;
     private int experiencePoints;
 
     public InventoryItem() {
@@ -28,14 +27,7 @@ public class InventoryItem implements Serializable {
     public void setInventoryType(String inventoryType) {
         this.inventoryType = inventoryType;
     }
-
-    public int getRequiredCost() {
-        return requiredCost;
-    }
-
-    public void setRequiredCost(int requiredCost) {
-        this.requiredCost = requiredCost;
-    }
+    
 
     public int getExperiencePoints() {
         return experiencePoints;
@@ -47,15 +39,14 @@ public class InventoryItem implements Serializable {
 
     @Override
     public String toString() {
-        return "InventoryItem{" + "inventoryType=" + inventoryType + ", requiredCost=" + requiredCost + ", experiencePoints=" + experiencePoints + '}';
+        return "InventoryItem{" + "inventoryType=" + inventoryType + ", experiencePoints=" + experiencePoints + '}';
     }
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 31 * hash + Objects.hashCode(this.inventoryType);
-        hash = 31 * hash + this.requiredCost;
-        hash = 31 * hash + this.experiencePoints;
+        int hash = 5;
+        hash = 29 * hash + Objects.hashCode(this.inventoryType);
+        hash = 29 * hash + this.experiencePoints;
         return hash;
     }
 
@@ -71,14 +62,13 @@ public class InventoryItem implements Serializable {
         if (!Objects.equals(this.inventoryType, other.inventoryType)) {
             return false;
         }
-        if (this.requiredCost != other.requiredCost) {
-            return false;
-        }
         if (this.experiencePoints != other.experiencePoints) {
             return false;
         }
         return true;
     }
+
+    
 
 
 }

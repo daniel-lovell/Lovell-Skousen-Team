@@ -22,10 +22,10 @@ public class GoldControlTest {
      * Test of calculateNewGold method, of class GoldControl.
      */
     @Test
-    public void testCalculateNewGold() {
+    public void testCalculateEarnedGold() {
         
         //Test Case 1
-        System.out.println("calculateNewGold1");
+        System.out.println("calculateEarnedGold1");
         int lastGoldEarned1 = 1;
         int countCorrect1 = 2;
         int expResult1 = 4;
@@ -35,7 +35,7 @@ public class GoldControlTest {
         //fail("The test case is a prototype.");
         
         //Test Case 2
-        System.out.println("calculateNewGold2");
+        System.out.println("calculateEarnedGold2");
         int lastGoldEarned2 = -1;
         int countCorrect2 = 3;
         int expResult2 = -1;
@@ -45,7 +45,7 @@ public class GoldControlTest {
         //fail("The test case is a prototype.");
         
         //Test Case 3
-        System.out.println("calculateNewGold3");
+        System.out.println("calculateEarnedGold3");
         int lastGoldEarned3 = 3;
         int countCorrect3 = -1;
         int expResult3 = -1;
@@ -55,7 +55,7 @@ public class GoldControlTest {
         //fail("The test case is a prototype.");
         
         //Test Case 4
-        System.out.println("calculateNewGold4");
+        System.out.println("calculateEarnedGold4");
         int lastGoldEarned4 = -1;
         int countCorrect4 = -1;
         int expResult4 = -1;
@@ -65,7 +65,7 @@ public class GoldControlTest {
         //fail("The test case is a prototype.");
         
         //Test Case 5
-        System.out.println("calculateNewGold5");
+        System.out.println("calculateEarnedGold5");
         int lastGoldEarned5 = 0;
         int countCorrect5 = 1;
         int expResult5 = 1;

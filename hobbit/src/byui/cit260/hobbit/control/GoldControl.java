@@ -20,8 +20,12 @@ public class GoldControl {
         int newGoldEarned = 0;
         //Add Calculated Gold to GoldPouch
         newGoldEarned = calculateEarnedGold(lastGoldEarned, countCorrect);
+        
+        //Update the gold in the pouch
         newGold = goldPouch.getAmount() + newGoldEarned;
         goldPouch.setAmount(newGold);
+        
+        //Return New Gold Earned
         return newGoldEarned;
     }
     

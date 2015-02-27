@@ -20,33 +20,34 @@ public class SuppliesView {
             + "\n-----------------------------------------------------"
             + "\n Purchase a sword to increase your attack and fight the dragon."
             + "\n-----------------------------------------------------";
-        private final String SHIELD = "\n"
+    private final String SHIELD = "\n"
             + "\n-----------------------------------------------------"
             + "\n| Shield                                        |"
             + "\n-----------------------------------------------------"
             + "\n Purchase a shield to increase your defense."
             + "\n-----------------------------------------------------";
-            private final String GOLDPOUCH = "\n"
+    private final String GOLDPOUCH = "\n"
             + "\n-----------------------------------------------------"
             + "\n| Gold Pouch                                     |"
             + "\n-----------------------------------------------------"
             + "\n Buy a pouch to store more gold."
             + "\n-----------------------------------------------------";
             
-            void displayStore() {
-            char selection = ' ';
-            do {
-                System.out.println(STORE); //DISPLAY the Main Menu
+    void displayStore() {
+        char selection = ' ';
+        do {
+            System.out.println(STORE); //DISPLAY the Main Menu
 
-                String input = this.getInput();
-                selection = input.charAt(0); 
+            String input = this.getInput();
+            selection = input.charAt(0); 
 
-                this.doAction(selection);
+            this.doAction(selection);
 
-            } while (selection != 'E'); 
-        
+        } while (selection != 'E'); 
 
-}
+
+    }
+    
        private String getInput() {
         boolean valid = false;       
         String selection = null;
@@ -70,7 +71,7 @@ public class SuppliesView {
         return selection;
        }
        
-       private void doAction(char choice) {
+    private void doAction(char choice) {
         switch (choice) {
             case 'S': // obtain sword.
                 this.obtainSword();
