@@ -1,14 +1,21 @@
 
 package byui.cit260.hobbit.view;
 
-import byui.cit260.hobbit.control.SkillsControl;
-import byui.cit260.hobbit.model.InventoryItem;
-import hobbit.Hobbit;
-import java.util.Scanner;
 
-
-public class SkillsView {
-    private final String MENU = "\n"
+public class SkillsView extends View{
+       
+        @Override
+    public boolean doAction(Object obj){
+        
+        String value = (String) obj;
+        
+        value = value.toUpperCase();
+        char choice = value.charAt(0);
+        return true;
+    }
+    
+    public SkillsView(){
+    /* private final String MENU = */ super("\n"
         + "\n-----------------------------------------------------"
         + "\n| Attack Points                                   |"
         + "\n| Defense Points                                   |"
@@ -17,15 +24,15 @@ public class SkillsView {
         + "\nA - Attack"
         + "\nD - Defense"
         + "\nE - Exit"
-        + "\n-----------------------------------------------------";
-    
+        + "\n-----------------------------------------------------");
+    }
     private final String MAX = "\n"
         + "\n!!!"
         + "\n!!! Your attack and defense is maxed out. Time to fight the dragon!"
         + "\n!!! "
         + "\n!!!";
     
-    void displayMenu() {
+    /* void displayMenu() {
         
         InventoryItem sword = Hobbit.getSword();
         InventoryItem shield = Hobbit.getShield();
@@ -68,15 +75,16 @@ public class SkillsView {
         }
         return selection;
     }
-    private void doAction(char selection){
-        switch (selection) {
-            case 'A': // create and start a new game
+    */
+    private void doAction(String value){
+        switch (value) {
+            case "A": // create and start a new game
                 this.doAttack();
                 break;
-            case 'D': // save the current game
+            case "D": // save the current game
                 this.doDefense();
                 break;
-            case 'E': // Leave the Gold Mines
+            case "E": // Leave the Gold Mines
                 return;
             default: // 
                 System.out.println("\n*** Invalid Selection - Try again");

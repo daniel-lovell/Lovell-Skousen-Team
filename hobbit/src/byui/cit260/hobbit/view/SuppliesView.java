@@ -1,11 +1,20 @@
 
 package byui.cit260.hobbit.view;
 
-import java.util.Scanner;
 
 
-public class SuppliesView {
-    private final String STORE = "\n"
+public class SuppliesView extends View {
+        @Override
+    public boolean doAction(Object obj){
+        
+        String value = (String) obj;
+        
+        value = value.toUpperCase();
+        char choice = value.charAt(0);
+        return true;
+    }
+    public SuppliesView(){
+    /*private final String STORE = */ super("\n"
             + "\n-----------------------------------------------------"
             + "\n| Purchase equipment                                      |"
             + "\n-----------------------------------------------------"
@@ -13,7 +22,8 @@ public class SuppliesView {
             + "\nD - Purchase a shield."
             + "\nG - Purchase a gold pouch."
             + "\nE - Exit store."
-            + "\n-----------------------------------------------------";
+            + "\n-----------------------------------------------------");
+    }
     private final String SWORD = "\n"
             + "\n-----------------------------------------------------"
             + "\n| Sword                                        |"
@@ -32,8 +42,8 @@ public class SuppliesView {
             + "\n-----------------------------------------------------"
             + "\n Buy a pouch to store more gold."
             + "\n-----------------------------------------------------";
-            
-    void displayStore() {
+    
+    /* void displayStore() {
         char selection = ' ';
         do {
             System.out.println(STORE); //DISPLAY the Main Menu
@@ -70,22 +80,22 @@ public class SuppliesView {
         }
         return selection;
        }
-       
-    private void doAction(char choice) {
-        switch (choice) {
-            case 'S': // obtain sword.
+    */
+    public void doAction(String value) {
+        switch (value) {
+            case "S": // obtain sword.
                 this.obtainSword();
                 //System.out.println(SWORD);
                 break;
-            case 'D': // obtain shield
+            case "D": // obtain shield
                 this.obtainShield();
                 //System.out.println(SHIELD);
                 break;
-            case 'G': // obtain gold pouch
+            case "G": // obtain gold pouch
                 this.obtainGoldPouch();
                 //System.out.println(GOLDPOUCH);
                 break;
-            case 'E': // Exit the store
+            case "E": // Exit the store
                 return;
             default: 
                 System.out.println("\n*** Invalid Selection - Try again");

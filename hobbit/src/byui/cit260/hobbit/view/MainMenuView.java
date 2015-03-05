@@ -121,7 +121,7 @@ public class MainMenuView extends View {
 
     private void displayHelpMenu() {
         HelpMenuView helpMenu = new HelpMenuView();
-        helpMenu.displayHelp();
+        helpMenu.display();
     }
    
     private void saveGame() {
@@ -129,7 +129,11 @@ public class MainMenuView extends View {
 
     private void displayStore() {
         SuppliesView suppliesStore = new SuppliesView();
-        suppliesStore.displayStore();
+        suppliesStore.display();
+    }
+    private void displaySkills(){
+        SkillsView skillsView = new SkillsView();
+        skillsView.display();
     }
 
     private void displayDragon() {

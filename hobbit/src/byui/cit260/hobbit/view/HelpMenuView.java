@@ -1,11 +1,20 @@
 
 package byui.cit260.hobbit.view;
 
-import java.util.Scanner;
 
-
-public class HelpMenuView {
-    private final String HELP = "\n"
+public class HelpMenuView extends View {
+    
+        @Override
+    public boolean doAction(Object obj){
+        
+        String value = (String) obj;
+        
+        value = value.toUpperCase();
+        char choice = value.charAt(0);
+        return true;
+    }
+    public HelpMenuView() {
+      /*private final String HELP = */super("\n"
             + "\n-----------------------------------------------------"
             + "\n| Help Menu                                        |"
             + "\n-----------------------------------------------------"
@@ -15,8 +24,9 @@ public class HelpMenuView {
             + "\nT - How to gain experience"
             + "\nF - How to fight the dragon"
             + "\nE - Exit the help menu"
-            + "\n-----------------------------------------------------";
-    private final String OBJECTIVE = "\n"
+            + "\n-----------------------------------------------------");
+    }
+        private final String OBJECTIVE = "\n"
             + "\n-----------------------------------------------------"
             + "\n| Game Objective                                        |"
             + "\n-----------------------------------------------------"
@@ -49,7 +59,7 @@ public class HelpMenuView {
             + "\n-----------------------------------------------------"
             + "\n Answer math problems to defend yourself and to attack the dragon."
             + "\n-----------------------------------------------------";
-    void displayHelp() {
+    /* void displayHelp() {
             char selection = ' ';
             do {
                 System.out.println(HELP); //DISPLAY the Main Menu
@@ -63,7 +73,8 @@ public class HelpMenuView {
         
     }
      private String getInput() {
-        boolean valid = false;              /*indicates if the name has been retrieved*/
+        boolean valid = false;              
+                //indicates if the name has been retrieved
         String selection = null;
         Scanner keyboard = new Scanner(System.in);
         
@@ -87,24 +98,24 @@ public class HelpMenuView {
         }
         return selection;
     }
-
-    private void doAction(char choice) {
-        switch (choice) {
-            case 'G': // get objective.
+    */
+    public void doAction(String value) {
+        switch (value) {
+            case "G": // get objective.
                 System.out.println(OBJECTIVE);
                 break;
-            case 'D': // obtaining gold
+            case "D": // obtaining gold
                 System.out.println(GOLD);
                 break;
-            case 'S': // obtaining supplies
+            case "S": // obtaining supplies
                 System.out.println(SUPPLIES);
                 break;
-            case 'T': // develop experience
+            case "T": // develop experience
                 System.out.println(EXPERIENCE);
                 break;
-            case 'F': // combat for fighting the dragon
+            case "F": // combat for fighting the dragon
                 System.out.println(COMBAT);
-            case 'E': // Exit the help menu
+            case "E": // Exit the help menu
                 return;
             default: 
                 System.out.println("\n*** Invalid Selection - Try again");
