@@ -3,12 +3,23 @@ package byui.cit260.hobbit.view;
 
 import byui.cit260.hobbit.control.GameControl;
 import hobbit.Hobbit;
-import java.util.Scanner;
 
 
-public class MainMenuView {
 
-    private final String MENU = "\n"
+public class MainMenuView extends View {
+   
+    @Override
+    public boolean doAction(Object obj){
+        
+        String value = (String) obj;
+        
+        value = value.toUpperCase();
+        char choice = value.charAt(0);
+        return true;
+    }
+    
+    public MainMenuView() {
+    /* private final String MENU = */ super("\n"
             + "\n-----------------------------------------------------"
             + "\n| Main Menu                                         |"
             + "\n-----------------------------------------------------"
@@ -20,9 +31,10 @@ public class MainMenuView {
             + "\nO - Gold"
             + "\nB - Store"
             + "\nE - Exit"
-            + "\n-----------------------------------------------------";
+            + "\n-----------------------------------------------------");
+    }
     
-    void displayMenu() {
+    /* void displayMenu() {
         
         char selection = ' ';
         do {
@@ -35,10 +47,10 @@ public class MainMenuView {
    
         } while (selection != 'E'); // a selection is not "Exit"
         
-    }
+    } */
 
-    private String getInput() {
-        boolean valid = false;              /*indicates if the name has been retrieved*/
+    /*private String getInput() {
+        boolean valid = false;           
         String selection = null;
         Scanner keyboard = new Scanner(System.in);
         
@@ -62,32 +74,32 @@ public class MainMenuView {
             break;
         }
         return selection;
-    }
+    } */
 
-    private void doAction(char choice) {
-        switch (choice) {
-            case 'N': // create and start a new game
+    public void doAction(String value) {
+        switch (value) {
+            case "N": // create and start a new game
                 this.startNewGame();
                 break;
-            case 'G': // get and start and existing game
+            case "G": // get and start and existing game
                 this.startExistingGame();
                 break;
-            case 'H': // display the help menu
+            case "H": // display the help menu
                 this.displayHelpMenu();
                 break;
-            case 'S': // save the current game
+            case "S": // save the current game
                 this.saveGame();
                 break;
-            case 'B': // save the current game
+            case "B": // save the current game
                 this.displayStore();
                 break;
-            case 'D': // save the current game
+            case "D": // save the current game
                 this.displayDragon();
                 break;
-            case 'O': // save the current game
+            case "O": // save the current game
                 this.displayGold();
                 break;
-            case 'E': // Exit the game
+            case "E": // Exit the game
                 return;
             default: // create and start a new game'
                 System.out.println("\n*** Invalid Selection - Try again");

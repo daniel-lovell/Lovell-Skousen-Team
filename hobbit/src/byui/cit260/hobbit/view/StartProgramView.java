@@ -29,7 +29,7 @@ public class StartProgramView {
         //We don't need this object after the welcome screen.
         //Can we just add the next lines to the main function and let this object die?
         MainMenuView mainMenu = new MainMenuView();
-        mainMenu.displayMenu();
+        mainMenu.display();
     }
     
     //Displays the welcome banner when program is started
