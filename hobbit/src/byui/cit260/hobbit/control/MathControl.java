@@ -15,6 +15,12 @@ import java.util.Random;
  * Note: Every time that makeMath() is run it will create a problem.
  * verifyMath() will verify against the last time makeMath() was run.
  * 
+ * Future Changes:
+ *  Remove setters
+ *  Turn makeMath() and makeMathRandom() into constructors
+ *      Make makeMath() and makeMathRandom() private
+ *      Change calls for makeMath() and makeMathRandom() into calls for getProblem()
+ * 
  */
 public class MathControl {
 
@@ -22,6 +28,7 @@ public class MathControl {
     private int operand2;
     private char operator;
     private String answer;
+    private String problem;
 
     public MathControl() {
     }
@@ -58,18 +65,25 @@ public class MathControl {
         this.answer = answer;
     }
 
+    public String getProblem() {
+        return problem;
+    }
+
+    public void setProblem(String problem) {
+        this.problem = problem;
+    }
+
     //I think everything in the makeMath function except the String return
     //should go in the constructor, but I didn't know how to validate inside a
     //constructor because constructors don't return anything. Then I would
     //replace this function with getProblem() that would return the String. -Daniel
     public String makeMath(String type) {
-        String problem = null;
         char op = type.charAt(0);
         
         //Validates arguments
         if (op != '+' && op != '-' && op != '*' && op != '/') {
-            problem = "Bad Operator";
-            return problem;
+            this.problem = "Bad Operator";
+            return this.problem;
         }
         
         //Updates operation type
@@ -84,13 +98,11 @@ public class MathControl {
         }
         
         //Return created problem as String
-        problem = this.operand1 + " " + this.operator + " " + this.operand2 + " = ?";
-        return problem;
+        this.problem = this.operand1 + " " + this.operator + " " + this.operand2 + " = ?";
+        return this.problem;
     }
     
     public String makeMathRandom() {
-        String problem = null;
-        
         //Randomly select operator
         char[] ops = {'+', '-', '*', '/'};
         Random rand = new Random();
@@ -108,8 +120,8 @@ public class MathControl {
         }
         
         //Return created problem as String
-        problem = this.operand1 + " " + this.operator + " " + this.operand2 + " = ?";
-        return problem;
+        this.problem = this.operand1 + " " + this.operator + " " + this.operand2 + " = ?";
+        return this.problem;
     }
     
     public boolean verifyMath(String userAnswer) {
