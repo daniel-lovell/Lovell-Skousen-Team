@@ -5,7 +5,15 @@ import java.util.Scanner;
 
 
 public abstract class View implements ViewInterface{
-    private String promptMessage; 
+    private String promptMessage;
+    
+    public String getPromptMessage() {
+        return promptMessage;
+    }
+
+    public void setPromptMessage(String promptMessage) {
+        this.promptMessage = promptMessage;
+    }
     
     public View(String promptMessage){
         this.promptMessage = promptMessage;
@@ -21,14 +29,7 @@ public abstract class View implements ViewInterface{
             this.doAction(value);
         } while (!value.equals("E"));
     }
-
-    public String getPromptMessage() {
-        return promptMessage;
-    }
-
-    public void setPromptMessage(String promptMessage) {
-        this.promptMessage = promptMessage;
-    }
+    
     @Override
     public String getInput() {
         Scanner keyboard = new Scanner(System.in);

@@ -7,19 +7,9 @@ import hobbit.Hobbit;
 
 
 public class MainMenuView extends View {
-   
-    @Override
-    public boolean doAction(Object obj){
-        
-        String value = (String) obj;
-        
-        value = value.toUpperCase();
-        char choice = value.charAt(0);
-        return true;
-    }
-    
+
     public MainMenuView() {
-    /* private final String MENU = */ super("\n"
+        super("\n"
             + "\n-----------------------------------------------------"
             + "\n| Main Menu                                         |"
             + "\n-----------------------------------------------------"
@@ -34,49 +24,12 @@ public class MainMenuView extends View {
             + "\n-----------------------------------------------------");
     }
     
-    /* void displayMenu() {
+    @Override
+    public boolean doAction(Object obj) {
+        String value = (String) obj;
+        value = value.toUpperCase();
+        char choice = value.charAt(0);
         
-        char selection = ' ';
-        do {
-            System.out.println(MENU); //DISPLAY the Main Menu
-            
-            String input = this.getInput(); //GET the user’s selection
-            selection = input.charAt(0); //get first character of string
-            
-            this.doAction(selection); //Perform the action associated with selection
-   
-        } while (selection != 'E'); // a selection is not "Exit"
-        
-    } */
-
-    /*private String getInput() {
-        boolean valid = false;           
-        String selection = null;
-        Scanner keyboard = new Scanner(System.in);
-        
-        while(!valid) {
-            //System.out.println("Enter the player's name below:");
-            
-            selection = keyboard.nextLine();
-            selection = selection.trim();
-            
-            if (!"G".equals(selection)
-                    && !"H".equals(selection)
-                    && !"B".equals(selection)
-                    && !"S".equals(selection)
-                    && !"D".equals(selection)
-                    && !"O".equals(selection)
-                    && !"E".equals(selection)
-                    && !"N".equals(selection)){
-                System.out.println("Invalid Selection - Try again.");
-                continue;
-            }
-            break;
-        }
-        return selection;
-    } */
-
-    public void doAction(String value) {
         switch (value) {
             case "N": // create and start a new game
                 this.startNewGame();
@@ -100,11 +53,12 @@ public class MainMenuView extends View {
                 this.displayGold();
                 break;
             case "E": // Exit the game
-                return;
+                break;
             default: // create and start a new game'
                 System.out.println("\n*** Invalid Selection - Try again");
                 break;
         }
+        return true;
     }
 
     private void startNewGame() {
@@ -113,11 +67,11 @@ public class MainMenuView extends View {
         //display the game menu
         GameMenuView gameMenu = new GameMenuView();
         gameMenu.displayMenu();
-        
     }
 
     private void startExistingGame() {
-        System.out.println("*** startExistingGame function called ***");    }
+        System.out.println("*** startExistingGame function called ***");
+    }
 
     private void displayHelpMenu() {
         HelpMenuView helpMenu = new HelpMenuView();
@@ -125,12 +79,14 @@ public class MainMenuView extends View {
     }
    
     private void saveGame() {
-        System.out.println("*** saveGame function called ***");    }
+        System.out.println("*** saveGame function called ***");
+    }
 
     private void displayStore() {
         SuppliesView suppliesStore = new SuppliesView();
         suppliesStore.display();
     }
+    
     private void displaySkills(){
         SkillsView skillsView = new SkillsView();
         skillsView.display();
@@ -144,7 +100,6 @@ public class MainMenuView extends View {
     private void displayGold() {
         GoldView goldView = new GoldView();
         goldView.displayMenu();
-
     }
     
 }

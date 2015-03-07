@@ -27,7 +27,7 @@ public class StartProgramView {
         //DISPLAY the main menu
         //Why are we calling the main menu here?
         //We don't need this object after the welcome screen.
-        //Can we just add the next lines to the main function and let this object die?
+        //Can we just add the next lines to the main function and let this object die? -DL
         MainMenuView mainMenu = new MainMenuView();
         mainMenu.display();
     }
