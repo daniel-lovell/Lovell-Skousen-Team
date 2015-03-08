@@ -7,80 +7,30 @@ package byui.cit260.hobbit.view;
 
 import byui.cit260.hobbit.control.GoldControl;
 import byui.cit260.hobbit.control.MathControl;
-import byui.cit260.hobbit.model.GoldPouch;
-import hobbit.Hobbit;
 import java.util.Scanner;
 
-/**
- *
- * @author daniel
- */
-public class GoldView {
-    
-    private final String MENU = "\n"
-        + "\n-----------------------------------------------------"
-        + "\n| Gold Mines Menu                                   |"
-        + "\n| Dig for gold by answering math problems.          |"
-        + "\n-----------------------------------------------------"
-        + "\nA - Addition is worth 1 piece of Gold"
-        + "\nS - Subtraction is worth 2 pieces of Gold"
-        + "\nM - Multiplication is worth 3 pieces of Gold"
-        + "\nD - Division is worth 4 pieces of Gold"
-        + "\nE - Exit"
-        + "\n-----------------------------------------------------";
-    
-    private final String FULL = "\n"
-        + "\n!!!"
-        + "\n!!! You can't hold any more Gold."
-        + "\n!!! Either spend some gold or buy a gold pouch."
-        + "\n!!!";
-    
-    void displayMenu() {
-        
-        GoldPouch goldPouch = Hobbit.getGoldPouch();
-        char selection = ' ';
-        do {
-            if (GoldControl.pouchFull(goldPouch)) {
-                System.out.println(FULL); //Display the full menu
-                selection = 'E';
-                break;
-            }
-            System.out.println(MENU); //DISPLAY the Gold Menu
 
-            String input = this.getInput(); //GET the user’s selection
-            selection = input.charAt(0); //get first character of string
-
-            this.doAction(selection); //Perform the action associated with selection
-   
-        } while (selection != 'E'); // a selection is not "Exit"
-        
+public class GoldView extends View {
+    
+    GoldView() {
+        super("\n"
+            + "\n-----------------------------------------------------"
+            + "\n| Gold Mines Menu                                   |"
+            + "\n| Dig for gold by answering math problems.          |"
+            + "\n-----------------------------------------------------"
+            + "\nA - Addition is worth 1 piece of Gold"
+            + "\nS - Subtraction is worth 2 pieces of Gold"
+            + "\nM - Multiplication is worth 3 pieces of Gold"
+            + "\nD - Division is worth 4 pieces of Gold"
+            + "\nE - Exit"
+            + "\n-----------------------------------------------------");
     }
     
-    private String getInput() {
-        boolean valid = false;
-        String selection = null;
-        Scanner keyboard = new Scanner(System.in);
-        
-        while(!valid) {
-            //System.out.println("Enter the player's name below:");
-            
-            selection = keyboard.nextLine();
-            selection = selection.trim();
-            
-            if (!"A".equals(selection)
-                    && !"S".equals(selection)
-                    && !"M".equals(selection)
-                    && !"D".equals(selection)
-                    && !"E".equals(selection)){
-                System.out.println("Invalid Selection - Try again.");
-                continue;
-            }
-            break;
-        }
-        return selection;
-    }
-
-    private void doAction(char choice) {
+    @Override
+    public boolean doAction(Object obj) {
+        String value = (String) obj;
+        value = value.toUpperCase();
+        char choice = value.charAt(0);
         switch (choice) {
             case 'A': // create and start a new game
                 this.doMath("+");
@@ -95,11 +45,12 @@ public class GoldView {
                 this.doMath("/");
                 break;
             case 'E': // Leave the Gold Mines
-                return;
+                break;
             default: // 
                 System.out.println("\n*** Invalid Selection - Try again");
                 break;
         }
+        return true;
     }
 
     private void doMath(String operator) {
@@ -138,8 +89,6 @@ public class GoldView {
         Scanner keyboard = new Scanner(System.in);
         
         while(!valid) {
-            //System.out.println("Enter the player's name below:");
-            
             selection = keyboard.nextLine();
             selection = selection.trim();
             
@@ -158,17 +107,15 @@ public class GoldView {
             
             selection = keyboard.nextLine();
             selection = selection.trim();
+            selection = selection.toUpperCase();
             
-            if (!"Y".equals(selection) && !"N".equals(selection)){
+            if ("Y".equals(selection) || "N".equals(selection)){
+                break;
+            } else {
                 System.out.println("Invalid Selection - Try again.");
-                continue;
             }
-            break;
         }
         return "Y".equals(selection);
     }
-        
-        
-    
-
+       
 }

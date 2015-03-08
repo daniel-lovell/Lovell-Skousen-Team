@@ -4,8 +4,6 @@ package byui.cit260.hobbit.view;
 import byui.cit260.hobbit.control.GameControl;
 import hobbit.Hobbit;
 
-
-
 public class MainMenuView extends View {
 
     public MainMenuView() {
@@ -17,9 +15,7 @@ public class MainMenuView extends View {
             + "\nN - New Game"
             + "\nS - Save game"
             + "\nH - Help"
-            + "\nD - Dragon"
-            + "\nO - Gold"
-            + "\nB - Store"
+            + "\nM - Map (Temporary Link to Map)"
             + "\nE - Exit"
             + "\n-----------------------------------------------------");
     }
@@ -30,29 +26,23 @@ public class MainMenuView extends View {
         value = value.toUpperCase();
         char choice = value.charAt(0);
         
-        switch (value) {
-            case "N": // create and start a new game
+        switch (choice) {
+            case 'N': // create and start a new game
                 this.startNewGame();
                 break;
-            case "G": // get and start and existing game
+            case 'G': // get and start and existing game
                 this.startExistingGame();
                 break;
-            case "H": // display the help menu
+            case 'H': // display the help menu
                 this.displayHelpMenu();
                 break;
-            case "S": // save the current game
+            case 'S': // save the current game
                 this.saveGame();
                 break;
-            case "B": // save the current game
-                this.displayStore();
+            case 'M':
+                this.displayMap();
                 break;
-            case "D": // save the current game
-                this.displayDragon();
-                break;
-            case "O": // save the current game
-                this.displayGold();
-                break;
-            case "E": // Exit the game
+            case 'E': // Exit the game
                 break;
             default: // create and start a new game'
                 System.out.println("\n*** Invalid Selection - Try again");
@@ -82,24 +72,9 @@ public class MainMenuView extends View {
         System.out.println("*** saveGame function called ***");
     }
 
-    private void displayStore() {
-        SuppliesView suppliesStore = new SuppliesView();
-        suppliesStore.display();
-    }
-    
-    private void displaySkills(){
-        SkillsView skillsView = new SkillsView();
-        skillsView.display();
+    private void displayMap() {
+        MapView mapView = new MapView();
+        mapView.display();
     }
 
-    private void displayDragon() {
-        DragonView dragonView = new DragonView();
-        dragonView.display();
-    }
-
-    private void displayGold() {
-        GoldView goldView = new GoldView();
-        goldView.displayMenu();
-    }
-    
 }

@@ -5,7 +5,7 @@ package byui.cit260.hobbit.view;
 public class GameMenuView {
 
     void displayMenu() {
-        System.out.println("\n*** displayMenu stub function called ***");
+        System.out.println("\n*** GameMenuView.displayMenu() stub function called ***");
     }
     
 }

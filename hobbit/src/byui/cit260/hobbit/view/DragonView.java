@@ -14,6 +14,9 @@ import java.util.Scanner;
  */
 public class DragonView {
     
+    public DragonView() {
+    }
+    
     private final String DEFEND = "\n"
             + "\n!!!"
             + "\n!!! The dragon is attacking! Defend yourself with math!"
@@ -51,7 +54,7 @@ public class DragonView {
             + "\n!!! and a sword with 10 points."
             + "\n!!!";
     
-    void display() {
+    public void display() {
         //Sword sword = Hobbit.getSword();
         //Shield shield = Hobbit.getShield();
         Player player = Hobbit.getPlayer();
@@ -60,7 +63,7 @@ public class DragonView {
         //if (DragonControl.battleReady(sword, shield)) {
             
             while (DragonControl.alive(player, dragon)) {
-                this.fight(player, dragon);
+                this.doAction(player, dragon);
             }
             
             if ("dragon".equals(DragonControl.winner(player, dragon))) {
@@ -78,7 +81,7 @@ public class DragonView {
         
     }
 
-    private void fight(Player player, Dragon dragon) {
+    private void doAction(Player player, Dragon dragon) {
         MathControl math = new MathControl();
         if (DragonControl.alive(player, dragon)) { //Defend
             //Display story
@@ -122,7 +125,7 @@ public class DragonView {
         }
     }
 
-    private String getInput() {
+    public String getInput() {
         boolean valid = false;              /*indicates if the name has been retrieved*/
         String selection = null;
         Scanner keyboard = new Scanner(System.in);

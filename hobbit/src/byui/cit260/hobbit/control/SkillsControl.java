@@ -13,8 +13,9 @@ import byui.cit260.hobbit.model.InventoryItem;
  */
 public class SkillsControl {
 
-    public static boolean skillMAX(InventoryItem sword) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public static boolean skillMax(InventoryItem sword) {
+        System.out.println("skillMax() called");
+        return true;
     }
     
 }

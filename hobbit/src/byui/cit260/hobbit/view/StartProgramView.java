@@ -40,7 +40,7 @@ public class StartProgramView {
                 + "\n* In this game, you will accompany a little hobbit      *"
                 + "\n* on his journey in order to defeat the evil dragon.    *");
         System.out.println("*                                                       *"
-                + "\n* Through your jounrey, you will dig for gold, in order *"
+                + "\n* Through your journey, you will dig for gold, in order *"
                 + "\n* to buy a shield and weapons to defeat the dragon.     *");
         System.out.println("*                                                       *"
                 + "\n* Go forth adventurers and conquer the dragon!          *"
@@ -71,10 +71,10 @@ public class StartProgramView {
 
     //Display customized welcome message
     private void displayWelcomeMessage(Player player) {
-        System.out.println("\n\n======================");
-        System.out.println("\t Welcome to Hobbit " + player.getName());
+        System.out.println("\n\n=========================================");
+        System.out.println("\t Welcome " + player.getName() + ".");
         System.out.println("\t Let your adventure begin!");
-        System.out.println("====================");
+        System.out.println("=========================================");
     }
 
 }
