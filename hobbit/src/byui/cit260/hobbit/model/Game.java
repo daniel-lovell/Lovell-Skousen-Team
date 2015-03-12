@@ -12,6 +12,12 @@ import java.io.Serializable;
  * @author daniel
  */
 public class Game implements Serializable {
+    
+    private InventoryItem[] inventory;
+    private Player player;
+    private String[] actors;
+    private Map map;
+            
     private long lastSaved; //timestamp of when game was last saved
     private long created; //timestamp of when the game was created
 
@@ -33,7 +39,11 @@ public class Game implements Serializable {
     public void setCreated(long created) {
         this.created = created;
     }
-
+       
+    public InventoryItem[] getInventory() {
+        return inventory;
+    }
+    
     @Override
     public String toString() {
         return "Game{" + "lastSaved=" + lastSaved + ", created=" + created + '}';
