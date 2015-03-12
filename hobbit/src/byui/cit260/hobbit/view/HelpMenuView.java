@@ -61,30 +61,28 @@ public class HelpMenuView extends View {
         
         value = value.toUpperCase();
         char choice = value.charAt(0);
-        return true;
-    }
-    
-    public void doAction(String value) {
-        switch (value) {
-            case "G": // get objective.
+
+        switch (choice) {
+            case 'G': // get objective.
                 System.out.println(OBJECTIVE);
                 break;
-            case "D": // obtaining gold
+            case 'D': // obtaining gold
                 System.out.println(GOLD);
                 break;
-            case "S": // obtaining supplies
+            case 'S': // obtaining supplies
                 System.out.println(SUPPLIES);
                 break;
-            case "T": // develop experience
+            case 'T': // develop experience
                 System.out.println(EXPERIENCE);
                 break;
-            case "F": // combat for fighting the dragon
+            case 'F': // combat for fighting the dragon
                 System.out.println(COMBAT);
-            case "E": // Exit the help menu
-                return;
+            case 'E': // Exit the help menu
+                break;
             default: 
                 System.out.println("\n*** Invalid Selection - Try again");
                 break;
         }
+        return true;
     }
 }

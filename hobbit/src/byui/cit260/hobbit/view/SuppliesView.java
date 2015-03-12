@@ -46,29 +46,27 @@ public class SuppliesView extends View {
         
         value = value.toUpperCase();
         char choice = value.charAt(0);
-        return true;
-    }    
-    
-    public void doAction(String value) {
-        switch (value) {
-            case "S": // obtain sword.
+
+        switch (choice) {
+            case 'S': // obtain sword.
                 this.obtainSword();
                 //System.out.println(SWORD);
                 break;
-            case "D": // obtain shield
+            case 'D': // obtain shield
                 this.obtainShield();
                 //System.out.println(SHIELD);
                 break;
-            case "G": // obtain gold pouch
+            case 'G': // obtain gold pouch
                 this.obtainGoldPouch();
                 //System.out.println(GOLDPOUCH);
                 break;
-            case "E": // Exit the store
-                return;
+            case 'E': // Exit the store
+                break;
             default: 
                 System.out.println("\n*** Invalid Selection - Try again");
                 break;
             }
+        return true;
     }
 
     private void obtainSword() {

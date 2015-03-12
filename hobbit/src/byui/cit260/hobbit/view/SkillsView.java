@@ -21,26 +21,23 @@ public class SkillsView extends View{
     public boolean doAction(Object obj){
         
         String value = (String) obj;
-        
         value = value.toUpperCase();
         char choice = value.charAt(0);
-        return true;
-    }
-    
-    private void doAction(String value){
-        switch (value) {
-            case "A": // create and start a new game
+
+        switch (choice) {
+            case 'A': 
                 this.buildAttack();
                 break;
-            case "D": // save the current game
+            case 'D': 
                 this.buildDefense();
                 break;
-            case "E": // Leave the Gold Mines
-                return;
+            case 'E': 
+                break;
             default: // 
                 System.out.println("\n*** Invalid Selection - Try again");
                 break;
         }
+        return true;
     }
 
     private void buildAttack() {
