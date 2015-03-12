@@ -23,6 +23,30 @@ public class Game implements Serializable {
 
     public Game() {
     }
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
+
+    public String[] getActors() {
+        return actors;
+    }
+
+    public void setActors(String[] actors) {
+        this.actors = actors;
+    }
+
+    public Map getMap() {
+        return map;
+    }
+
+    public void setMap(Map map) {
+        this.map = map;
+    }
     
     public long getLastSaved() {
         return lastSaved;
@@ -39,10 +63,15 @@ public class Game implements Serializable {
     public void setCreated(long created) {
         this.created = created;
     }
-       
+    
     public InventoryItem[] getInventory() {
         return inventory;
     }
+
+    public void setInventory(InventoryItem[] inventory) {
+        this.inventory = inventory;
+    }
+
     
     @Override
     public String toString() {
