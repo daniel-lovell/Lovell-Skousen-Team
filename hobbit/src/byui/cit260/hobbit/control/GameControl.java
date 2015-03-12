@@ -42,7 +42,7 @@ public class GameControl {
     public static InventoryItem[] createInventoryList(){
         
         InventoryItem[] inventory =
-              new InventoryItem[Constants.NUMBER_OF_INVENTORY_ITEMS];
+            new InventoryItem[Constants.NUMBER_OF_INVENTORY_ITEMS];
         
         InventoryItem sword = new InventoryItem();
         sword.setInventoryType("Sword");
