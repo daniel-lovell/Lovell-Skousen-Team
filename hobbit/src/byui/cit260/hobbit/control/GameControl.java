@@ -1,8 +1,10 @@
 
 package byui.cit260.hobbit.control;
 
+import byui.cit260.hobbit.model.Constants;
 import byui.cit260.hobbit.model.Game;
 import byui.cit260.hobbit.model.InventoryItem;
+import byui.cit260.hobbit.model.Item;
 import byui.cit260.hobbit.model.Map;
 import byui.cit260.hobbit.model.Player;
 import hobbit.Hobbit;
@@ -32,15 +34,13 @@ public class GameControl {
               new InventoryItem[Constants.NUMBER_OF_INVENTORY_ITEMS];
         
         InventoryItem sword = new InventoryItem();
-        sword.setDescription("Sword");
-        sword.setQuantityInStock(0);
-        sword.setRequiredAmount(1);
+        sword.setInventoryType("Sword");
+        sword.setExperiencePoints(0);
         inventory[Item.sword.ordinal()] = sword;
         
         InventoryItem shield = new InventoryItem();
-        shield.setDescription("Shield");
-        shield.setQuantityInStock(0);
-        shield.setRequiredAmount(1);
+        shield.setInventoryType("Shield");
+        shield.setExperiencePoints(0);
         inventory[Item.shield.ordinal()] = shield;
         
         return inventory;

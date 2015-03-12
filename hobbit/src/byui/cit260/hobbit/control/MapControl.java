@@ -6,7 +6,7 @@ import byui.cit260.hobbit.model.Map;
 
 public class MapControl {
     
-    public static Map createMap() throws MapControlException {
+    public static Map createMap() {
         System.out.println("*** called createMap() ***");
         return null;
     }

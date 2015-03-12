@@ -23,8 +23,8 @@ public class Hobbit {
     
     private static Game currentGame = null;
     private static Player player = null;
+    
     private static GoldPouch goldPouch = null;
- 
     private static InventoryItem sword = null;
     private static InventoryItem shield = null;
    
