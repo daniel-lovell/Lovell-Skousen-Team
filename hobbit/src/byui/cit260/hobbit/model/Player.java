@@ -18,11 +18,10 @@ public class Player implements Serializable {
     
     private String name;
     private int lifePoints;
+    private Player[] players;
 
     public Player() {
     }
-    
-    
     
     public String getName() {
         return name;
@@ -41,6 +40,14 @@ public class Player implements Serializable {
         this.lifePoints = lifePoints;
     }
 
+    public Player[] getPlayers() {
+        return players;
+    }
+
+    public void setPlayers(Player[] players) {
+        this.players = players;
+    }
+    
     @Override
     public String toString() {
         return "Player{" + "name=" + name + ", lifePoints=" + lifePoints + '}';

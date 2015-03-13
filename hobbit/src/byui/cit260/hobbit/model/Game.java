@@ -1,22 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package byui.cit260.hobbit.model;
 
 import java.io.Serializable;
 
-/**
- *
- * @author daniel
- */
+
 public class Game implements Serializable {
     
     private InventoryItem[] inventory;
     private Player player;
     private String[] actors;
     private Map map;
+    private Dragon dragon;
+    private GoldPouch goldPouch;
             
     private long lastSaved; //timestamp of when game was last saved
     private long created; //timestamp of when the game was created
@@ -72,6 +67,21 @@ public class Game implements Serializable {
         this.inventory = inventory;
     }
 
+    public Dragon getDragon() {
+        return dragon;
+    }
+
+    public void setDragon(Dragon dragon) {
+        this.dragon = dragon;
+    }
+
+    public GoldPouch getGoldPouch() {
+        return goldPouch;
+    }
+
+    public void setGoldPouch(GoldPouch goldPouch) {
+        this.goldPouch = goldPouch;
+    }
     
     @Override
     public String toString() {
