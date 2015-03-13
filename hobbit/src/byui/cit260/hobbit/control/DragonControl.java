@@ -8,10 +8,7 @@ package byui.cit260.hobbit.control;
 import byui.cit260.hobbit.model.Dragon;
 import byui.cit260.hobbit.model.Player;
 
-/**
- *
- * @author daniel
- */
+
 public class DragonControl {
     public static int calculateAttackStrength(int lastAttackStrength, int countCorrect) {
         
@@ -62,6 +59,11 @@ public class DragonControl {
 
     public static void attackWorked(int attackStrength, Dragon dragon) {
         dragon.setLifePoints(dragon.getLifePoints() - attackStrength);
+    }
+
+    static Dragon createDragon() {
+        Dragon dragon = new Dragon();
+        return dragon;
     }
 
 }

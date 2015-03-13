@@ -2,7 +2,9 @@
 package byui.cit260.hobbit.control;
 
 import byui.cit260.hobbit.model.Constants;
+import byui.cit260.hobbit.model.Dragon;
 import byui.cit260.hobbit.model.Game;
+import byui.cit260.hobbit.model.GoldPouch;
 import byui.cit260.hobbit.model.InventoryItem;
 import byui.cit260.hobbit.model.Item;
 import byui.cit260.hobbit.model.Map;
@@ -11,9 +13,8 @@ import hobbit.Hobbit;
 
 
 public class GameControl {
-    public static void createNewGame(Player player){
     
-
+    public static void createNewGame(Player player){ //Where does the player come from? -DL
         
         Game game = new Game();
         Hobbit.setCurrentGame(game);
@@ -26,8 +27,15 @@ public class GameControl {
         Map map = MapControl.createMap();
         game.setMap(map);
         
+        Dragon dragon = DragonControl.createDragon();
+        game.setDragon(dragon);
+        
+        GoldPouch goldPouch = GoldControl.createPouch();
+        game.setGoldPouch(goldPouch);
+        
         MapControl.moveActorsToStartingLocation(map);
     }
+    
     public static InventoryItem[] createInventoryList(){
         
         InventoryItem[] inventory =
@@ -44,6 +52,7 @@ public class GameControl {
         inventory[Item.shield.ordinal()] = shield;
         
         return inventory;
+        
     }
    
 }

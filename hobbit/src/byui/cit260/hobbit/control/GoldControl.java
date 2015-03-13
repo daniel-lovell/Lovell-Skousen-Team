@@ -5,6 +5,7 @@
  */
 package byui.cit260.hobbit.control;
 
+import byui.cit260.hobbit.model.Game;
 import byui.cit260.hobbit.model.GoldPouch;
 import hobbit.Hobbit;
 
@@ -15,7 +16,10 @@ import hobbit.Hobbit;
 public class GoldControl {
     
     public static int correctAnswer(int countCorrect, int lastGoldEarned) {
-        GoldPouch goldPouch = Hobbit.getGoldPouch();
+        
+        Game game = Hobbit.getCurrentGame();
+        GoldPouch goldPouch = game.getGoldPouch();
+        
         int newGold = 0;
         int newGoldEarned = 0;
         //Add Calculated Gold to GoldPouch
@@ -52,6 +56,11 @@ public class GoldControl {
     public static boolean pouchFull(GoldPouch goldPouch) {
         
         return goldPouch.getAmount() / goldPouch.getMaxAmount() >= 1;
+    }
+
+    static GoldPouch createPouch() {
+        GoldPouch goldPouch = new GoldPouch();
+        return goldPouch;
     }
    
 }
