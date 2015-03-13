@@ -2,7 +2,6 @@
 package byui.cit260.hobbit.view;
 
 import byui.cit260.hobbit.control.ProgramControl;
-import byui.cit260.hobbit.model.GoldPouch;
 import byui.cit260.hobbit.model.Player;
 import java.util.Scanner;
 
@@ -17,9 +16,6 @@ public class StartProgramView {
         //Create a new player object
         String playersName = this.getPlayersName();
         Player player = ProgramControl.createPlayer(playersName);
-        
-        //Create a default pouch size
-        GoldPouch goldPouch = ProgramControl.createSmallPouch();
         
         //Display a customized welcome message
         this.displayWelcomeMessage(player);

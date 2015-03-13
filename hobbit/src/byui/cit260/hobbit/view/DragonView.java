@@ -4,6 +4,7 @@ package byui.cit260.hobbit.view;
 import byui.cit260.hobbit.control.DragonControl;
 import byui.cit260.hobbit.control.MathControl;
 import byui.cit260.hobbit.model.Dragon;
+import byui.cit260.hobbit.model.Game;
 import byui.cit260.hobbit.model.Player;
 import hobbit.Hobbit;
 import java.util.Scanner;
@@ -55,10 +56,13 @@ public class DragonView {
             + "\n!!!";
     
     public void display() {
+        
+        Game game = Hobbit.getCurrentGame();
         //Sword sword = Hobbit.getSword();
         //Shield shield = Hobbit.getShield();
-        Player player = Hobbit.getPlayer();
-        Dragon dragon = new Dragon();
+        
+        Player player = game.getPlayer();
+        Dragon dragon = game.getDragon();
         DragonControl.initializeBattle(player, dragon);
         //if (DragonControl.battleReady(sword, shield)) {
             

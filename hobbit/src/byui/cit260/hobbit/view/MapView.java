@@ -3,11 +3,15 @@ package byui.cit260.hobbit.view;
 
 import byui.cit260.hobbit.control.GoldControl;
 import byui.cit260.hobbit.control.SkillsControl;
+import byui.cit260.hobbit.model.Game;
 import byui.cit260.hobbit.model.GoldPouch;
 import byui.cit260.hobbit.model.InventoryItem;
+import byui.cit260.hobbit.model.Item;
 import hobbit.Hobbit;
 
 public class MapView extends View {
+    
+    Game game = Hobbit.getCurrentGame();
     
     public MapView() {
         super("\n"
@@ -65,8 +69,10 @@ public class MapView extends View {
     }
     
     private void displaySkills(){
-        InventoryItem sword = Hobbit.getSword();
-        InventoryItem shield = Hobbit.getShield();
+        InventoryItem[] inventoryItems = game.getInventory();
+        InventoryItem sword = inventoryItems[Item.shield.ordinal()];
+        InventoryItem shield = inventoryItems[Item.shield.ordinal()];
+        
         if (SkillsControl.skillMax(sword)|| SkillsControl.skillMax(shield)) {
             System.out.println("\n"
                 + "\n!!!"
@@ -84,7 +90,7 @@ public class MapView extends View {
     }
 
     private void displayGold() {
-        GoldPouch goldPouch = Hobbit.getGoldPouch();
+        GoldPouch goldPouch = game.getGoldPouch();
         if (GoldControl.pouchFull(goldPouch)) {
             System.out.println("\n"
                 + "\n!!!"
