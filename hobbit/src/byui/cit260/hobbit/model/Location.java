@@ -6,6 +6,7 @@
 package byui.cit260.hobbit.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  *
@@ -14,6 +15,9 @@ import java.io.Serializable;
 public class Location implements Serializable {
     private int rowCoordinate;
     private int columnCoordinate;
+    private boolean visited;
+    private Scene scene;
+    private ArrayList<Actor> actors;
 
     public Location() {
     }
@@ -34,6 +38,22 @@ public class Location implements Serializable {
         this.columnCoordinate = columnCoordinate;
     }
 
+    public boolean isVisited() {
+        return visited;
+    }
+
+    public void setVisited(boolean visited) {
+        this.visited = visited;
+    }
+
+    public Scene getScene() {
+        return scene;
+    }
+
+    public void setScene(Scene scene) {
+        this.scene = scene;
+    }
+    
     @Override
     public String toString() {
         return "Location{" + "rowCoordinate=" + rowCoordinate + ", columnCoordinate=" + columnCoordinate + '}';

@@ -15,6 +15,7 @@ import java.util.Objects;
 public class Scene implements Serializable {
     
     private String description;
+    private boolean Blocked;
 
     public Scene() {
     }
@@ -28,6 +29,16 @@ public class Scene implements Serializable {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    public boolean isBlocked() {
+        return Blocked;
+    }
+
+    public void setBlocked(boolean Blocked) {
+        this.Blocked = Blocked;
+    }
+    
+    
 
     @Override
     public String toString() {

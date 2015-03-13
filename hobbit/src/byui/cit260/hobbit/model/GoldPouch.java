@@ -17,6 +17,8 @@ public class GoldPouch implements Serializable {
     private int maxAmount;
 
     public GoldPouch() {
+        this.amount = 0;
+        this.maxAmount = Constants.INITIAL_MAX_GOLD;
     }
     
     

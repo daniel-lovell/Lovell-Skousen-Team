@@ -15,6 +15,7 @@ public class Dragon implements Serializable{
     private int lifePoints;
 
     public Dragon() {
+        this.lifePoints = 0;
     }
 
     public int getLifePoints() {
