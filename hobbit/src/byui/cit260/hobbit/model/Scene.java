@@ -16,8 +16,17 @@ public class Scene implements Serializable {
     
     private String description;
     private boolean Blocked;
+    private String mapSymbol;
 
     public Scene() {
+    }
+
+    public String getMapSymbol() {
+        return mapSymbol;
+    }
+
+    public void setMapSymbol(String mapSymbol) {
+        this.mapSymbol = mapSymbol;
     }
     
     

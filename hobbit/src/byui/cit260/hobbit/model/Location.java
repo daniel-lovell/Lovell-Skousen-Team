@@ -38,7 +38,7 @@ public class Location implements Serializable {
         this.columnCoordinate = columnCoordinate;
     }
 
-    public boolean isVisited() {
+    public boolean getVisited() {
         return visited;
     }
 
@@ -46,6 +46,7 @@ public class Location implements Serializable {
         this.visited = visited;
     }
 
+    
     public Scene getScene() {
         return scene;
     }

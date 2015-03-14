@@ -3,6 +3,8 @@ package byui.cit260.hobbit.view;
 
 import byui.cit260.hobbit.control.GameControl;
 import byui.cit260.hobbit.model.InventoryItem;
+import byui.cit260.hobbit.model.Location;
+import hobbit.Hobbit;
 
 
 public class GameMenuView extends View {
@@ -12,10 +14,10 @@ public class GameMenuView extends View {
             + "\n-----------------------------------------------------"
             + "\n| Game Menu                                        |"
             + "\n-----------------------------------------------------"
-            + "\nG - Inventory"
-            + "\nN - Display Map"
-            + "\nS - Actors"
-            + "\nH - Gold Pouch"
+            + "\nI - Inventory"
+            + "\nM - Display Map"
+            + "\nA - Actors"
+            + "\nG - Gold Pouch"
             + "\nE - Exit"
             + "\n-----------------------------------------------------");
     }
@@ -27,7 +29,7 @@ public class GameMenuView extends View {
         char choice = value.charAt(0); 
         
         switch (choice) {
-            case 'V':
+            case 'M':
                 this.displayMap();
                 break;
             case 'I':
@@ -36,7 +38,7 @@ public class GameMenuView extends View {
             case 'A':
                 this.viewActors();
                 break;
-            case 'S':
+            case 'G':
                 this.viewGoldPouch();
                 break;
             case 'E':
@@ -62,7 +64,26 @@ public class GameMenuView extends View {
     }
 
     private void displayMap() {
-        System.out.println("*** displayMap stub fuction called ***");
+        //get the map locations from the current game
+        Location[][] locations = Hobbit.getCurrentGame().getMap().getLocations();
+        
+        System.out.println("\n ! MAP !");
+        System.out.println("  1 2 3 ");
+        System.out.println(" -------");
+        for (int i = 0; i < locations.length; i++) {
+            System.out.print(i + 1 + "|");
+            for (int j = 0; j < locations[i].length; j++) {
+                Location location = locations[i][j];
+                if (location.getVisited()) {
+                    System.out.print(location.getScene().getMapSymbol());
+                } else {
+                    System.out.print("?");
+                }
+                System.out.print("|");
+            }
+            System.out.println("\n -------");
+        }
+            
     }
 
     private void viewActors() {
