@@ -72,5 +72,24 @@ public class GameControl {
         locations[2][2].setScene(scenes[SceneType.dragonScene.ordinal()]);
         
     }
-   
+
+    public static InventoryItem[] getSortedInventoryList() {
+        InventoryItem[] originalInventoryList = 
+               Hobbit.getCurrentGame().getInventory();
+        
+        InventoryItem[] inventoryList = originalInventoryList.clone();
+        
+        InventoryItem tempInventoryItem;
+        for (int i = 0; i < inventoryList.length-1; i++) {
+            for (int j = 0; j < inventoryList.length-1-i; j++){
+                if (inventoryList[j].getInventoryType().
+                        compareToIgnoreCase(inventoryList[j + 1].getInventoryType()) > 0) {
+                    tempInventoryItem = inventoryList[j];
+                    inventoryList[j] = inventoryList[j + 1];
+                    inventoryList[j + 1] = tempInventoryItem;
+                }
+            }
+        }
+        return inventoryList;
+    }
 }

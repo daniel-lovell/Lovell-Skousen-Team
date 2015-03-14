@@ -16,7 +16,25 @@ public class InventoryItem implements Serializable {
     
     private String inventoryType;
     private int experiencePoints;
+    private int requiredAmount;
+    private int quantityInStock;
 
+    public int getRequiredAmount() {
+        return requiredAmount;
+    }
+
+    public void setRequiredAmount(int requiredAmount) {
+        this.requiredAmount = requiredAmount;
+    }
+
+    public int getQuantityInStock() {
+        return quantityInStock;
+    }
+
+    public void setQuantityInStock(int quantityInStock) {
+        this.quantityInStock = quantityInStock;
+    }
+    
     public InventoryItem() {
     }
 
@@ -67,8 +85,6 @@ public class InventoryItem implements Serializable {
         }
         return true;
     }
-
-    
 
 
 }
