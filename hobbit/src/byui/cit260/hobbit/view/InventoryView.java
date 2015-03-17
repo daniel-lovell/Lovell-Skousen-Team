@@ -2,10 +2,15 @@
 package byui.cit260.hobbit.view;
 
 import byui.cit260.hobbit.model.InventoryItem;
+import byui.cit260.hobbit.model.Player;
 import hobbit.Hobbit;
 
 
 public class InventoryView extends View {
+
+    private static void viewInventory(Player player) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     public InventoryView(){
         super("\n"
@@ -38,7 +43,11 @@ public class InventoryView extends View {
             }
         return true;
     }
-    
+     private void Inventory() {
+        InventoryView.viewInventory(Hobbit.getPlayer());
+        GameMenuView gameMenu = new GameMenuView();
+        gameMenu.display();
+    }
     public static void main(String args[]){
         inventoryItem<String> item = new inventoryItem<String>();
             item.add("sword");
@@ -53,6 +62,12 @@ public class InventoryView extends View {
 
     private void viewInventory() {
         System.out.println("*** viewInventory function called ***");  
+    }
+
+    private static class inventoryItem {
+
+        public inventoryItem() {
+        }
     }
         
         
