@@ -1,5 +1,5 @@
 
-package byui.cit260.hobbit.view;
+/* package byui.cit260.hobbit.view;
 
 import byui.cit260.hobbit.model.InventoryItem;
 import byui.cit260.hobbit.model.Player;
@@ -72,4 +72,4 @@ public class InventoryView extends View {
         
         
 }
-
+*/
