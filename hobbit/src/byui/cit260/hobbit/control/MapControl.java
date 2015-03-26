@@ -1,11 +1,14 @@
 
 package byui.cit260.hobbit.control;
 
+import byui.cit260.hobbit.exceptions.MapControlException;
+import byui.cit260.hobbit.model.Actor;
 import byui.cit260.hobbit.model.Game;
 import byui.cit260.hobbit.model.Map;
 import byui.cit260.hobbit.model.Scene;
 import byui.cit260.hobbit.model.SceneType;
 import hobbit.Hobbit;
+import java.awt.Point;
 
 
 public class MapControl {
@@ -19,11 +22,36 @@ public class MapControl {
         
         return map;
     }
-    
-    public static void moveActorsToStartingLocation(Map map) {
-        System.out.println("*** called moveActorsToStartingLocation() ***");
-    }
 
+    
+                //Start of Team Assignment 10
+    public static void moveActorToLocation(Actor actor, Point coordinates)
+                            throws MapControlException {
+        
+        Map map = Hobbit.getCurrentGame().getMap();
+        int newRow = coordinates.x-1;
+        int newColumn = coordinates.y-1;
+    
+        if (newRow < 0 || newRow >= map.getRowCount() ||
+            newColumn < 0 || newColumn >= map.getColumnCount()) {
+            throw new MapControlException("Can not move actor to location "
+                        + coordinates.x + ", " + coordinates.y
+                        + " because that location is outside "
+                        + " the bounds of the map.");
+            }
+        }            
+    public static void moveActorsToStartingLocation(Map map)
+                            throws MapControlException {
+        //For every actor
+        Actor[] actors = Actor.values();
+        
+        for (Actor actor : actors) {
+            Point coordinates = actor.getCoordinates();
+            MapControl.moveActorToLocation(actor, coordinates);
+        }
+    }
+            //End of Team Assignment 10
+    
     private static Scene[] createScenes() {
         
         Game game = Hobbit.getCurrentGame();

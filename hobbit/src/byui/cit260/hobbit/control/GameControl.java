@@ -1,6 +1,7 @@
 
 package byui.cit260.hobbit.control;
 
+import byui.cit260.hobbit.exceptions.MapControlException;
 import byui.cit260.hobbit.model.Constants;
 import byui.cit260.hobbit.model.Dragon;
 import byui.cit260.hobbit.model.Game;
@@ -13,6 +14,8 @@ import byui.cit260.hobbit.model.Player;
 import byui.cit260.hobbit.model.Scene;
 import byui.cit260.hobbit.model.SceneType;
 import hobbit.Hobbit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 public class GameControl {
@@ -36,7 +39,11 @@ public class GameControl {
         GoldPouch goldPouch = GoldControl.createPouch();
         game.setGoldPouch(goldPouch);
         
-        MapControl.moveActorsToStartingLocation(map);
+        try {
+            MapControl.moveActorsToStartingLocation(map);
+        } catch (MapControlException me) {
+            System.out.println(me.getMessage());
+        }
     }
     
     public static InventoryItem[] createInventoryList(){
