@@ -52,7 +52,7 @@ public class MapView extends View {
             case 'E': // Exit the game
                 break;
             default: // create and start a new game'
-                System.out.println("\n*** Invalid Selection - Try again");
+                ErrorView.display(this.getClass().getName(),"\n*** Invalid Selection - Try again");
                 break;
         }
         return true;
@@ -74,7 +74,7 @@ public class MapView extends View {
         InventoryItem shield = inventoryItems[Item.shield.ordinal()];
         
         if (SkillsControl.skillMax(sword)|| SkillsControl.skillMax(shield)) {
-            System.out.println("\n"
+            this.console.println("\n"
                 + "\n!!!"
                 + "\n!!! Your attack and defense is maxed out. Time to fight the dragon!"
                 + "\n!!!");
@@ -92,7 +92,7 @@ public class MapView extends View {
     private void displayGold() {
         GoldPouch goldPouch = game.getGoldPouch();
         if (GoldControl.pouchFull(goldPouch)) {
-            System.out.println("\n"
+            this.console.println("\n"
                 + "\n!!!"
                 + "\n!!! You can't hold any more Gold."
                 + "\n!!! Either spend some gold or buy a gold pouch."

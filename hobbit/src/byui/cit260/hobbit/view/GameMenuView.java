@@ -50,14 +50,14 @@ public class GameMenuView extends View {
         
         InventoryItem[] inventory = GameControl.getSortedInventoryList();
         
-        System.out.println("\nList of Inventory Items");
-        System.out.println("Description" + "\t" +
+        this.console.println("\nList of Inventory Items");
+        this.console.println("Description" + "\t" +
                            "Required" + "\t" + 
                            "In Stock");
         
         for (InventoryItem inventoryItem : inventory) {
             
-            System.out.println(inventoryItem.getInventoryType() + "\t     " +
+            this.console.println(inventoryItem.getInventoryType() + "\t     " +
                                inventoryItem.getRequiredAmount() + "\t  " +
                                inventoryItem.getQuantityInStock());
         }
@@ -67,31 +67,31 @@ public class GameMenuView extends View {
         //get the map locations from the current game
         Location[][] locations = Hobbit.getCurrentGame().getMap().getLocations();
         
-        System.out.println("\n ! MAP !");
-        System.out.println("  1 2 3 ");
-        System.out.println(" -------");
+        this.console.println("\n ! MAP !");
+        this.console.println("  1 2 3 ");
+        this.console.println(" -------");
         for (int i = 0; i < locations.length; i++) {
-            System.out.print(i + 1 + "|");
+            this.console.print(i + 1 + "|");
             for (int j = 0; j < locations[i].length; j++) {
                 Location location = locations[i][j];
                 if (location.getVisited()) {
-                    System.out.print(location.getScene().getMapSymbol());
+                    this.console.print(location.getScene().getMapSymbol());
                 } else {
-                    System.out.print("?");
+                    this.console.print("?");
                 }
-                System.out.print("|");
+                this.console.print("|");
             }
-            System.out.println("\n -------");
+            this.console.println("\n -------");
         }
             
     }
 
     private void viewActors() {
-        System.out.println("*** viewActors stub fuction called ***");
+        this.console.println("*** viewActors stub fuction called ***");
     }
 
     private void viewGoldPouch() {
-        System.out.println("*** viewGoldPouch stub fuction called ***");
+        this.console.println("*** viewGoldPouch stub fuction called ***");
     }
     
 }

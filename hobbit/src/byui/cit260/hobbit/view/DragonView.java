@@ -7,13 +7,18 @@ import byui.cit260.hobbit.model.Dragon;
 import byui.cit260.hobbit.model.Game;
 import byui.cit260.hobbit.model.Player;
 import hobbit.Hobbit;
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.PrintWriter;
 
 /**
  *
  * @author daniel
  */
 public class DragonView {
+    
+    BufferedReader keyboard = Hobbit.getInFile();
+    PrintWriter console = Hobbit.getOutFile();
     
     public DragonView() {
     }
@@ -67,31 +72,35 @@ public class DragonView {
         //if (DragonControl.battleReady(sword, shield)) {
             
             while (DragonControl.alive(player, dragon)) {
+            try {
                 this.doAction(player, dragon);
+            } catch (IOException ex) {
+                this.console.println("Input Error");
+            }
             }
             
             if ("dragon".equals(DragonControl.winner(player, dragon))) {
-                System.out.println(DIE);
+                this.console.println(DIE);
                 //DragonControl.die();
             } else {
-                System.out.println(WIN);
+                this.console.println(WIN);
                 //DragonControl.win();
             }
             
             
         //} else {
-        //    System.out.println(NOT_READY);
+        //    this.console.println(NOT_READY);
         //}
         
     }
 
-    private void doAction(Player player, Dragon dragon) {
+    private void doAction(Player player, Dragon dragon) throws IOException {
         MathControl math = new MathControl();
         if (DragonControl.alive(player, dragon)) { //Defend
             //Display story
-            System.out.println(DEFEND);
+            this.console.println(DEFEND);
             //Show math problem
-            System.out.println(math.makeMathRandom());
+            this.console.println(math.makeMathRandom());
             
             //Get answer
             String userAnswer = this.getInput();
@@ -107,9 +116,9 @@ public class DragonView {
             int lastAttackStrength = 0;
             do {
                 //Display story
-                System.out.println(ATTACK);
+                this.console.println(ATTACK);
                 //Show math problem
-                System.out.println(math.makeMathRandom());
+                this.console.println(math.makeMathRandom());
 
                 //Get answer
                 String userAnswer = this.getInput();
@@ -129,15 +138,14 @@ public class DragonView {
         }
     }
 
-    public String getInput() {
+    public String getInput() throws IOException {
         boolean valid = false;              /*indicates if the name has been retrieved*/
         String selection = null;
-        Scanner keyboard = new Scanner(System.in);
-        
+                
         while(!valid) {
-            //System.out.println("Enter the player's name below:");
+            //this.console.println("Enter the player's name below:");
             
-            selection = keyboard.nextLine();
+            selection = this.keyboard.readLine();
             selection = selection.trim();
             
             break;
@@ -147,19 +155,19 @@ public class DragonView {
 
     private void doActionDefenseFailed(Player player) {
         DragonControl.defenseFailed(player);
-        System.out.println("Defense Failed");
+        this.console.println("Defense Failed");
     }
 
     private int doActionAttackWorked(int lastAttackStrength, int countCorrect, Dragon dragon) {
         int attackStrength = DragonControl.calculateAttackStrength(lastAttackStrength, countCorrect);
         DragonControl.attackWorked(attackStrength, dragon);
-        System.out.println("Attack Succeeded!");
+        this.console.println("Attack Succeeded!");
         
         return attackStrength;
     }
 
     private void doActionAttackFailed() {
-        System.out.println("Attack Failed");
+        this.console.println("Attack Failed");
     }
 
 

@@ -7,7 +7,9 @@ package byui.cit260.hobbit.view;
 
 import byui.cit260.hobbit.control.GoldControl;
 import byui.cit260.hobbit.control.MathControl;
-import java.util.Scanner;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 public class GoldView extends View {
@@ -47,7 +49,7 @@ public class GoldView extends View {
             case 'E': // Leave the Gold Mines
                 break;
             default: // 
-                System.out.println("\n*** Invalid Selection - Try again");
+                this.console.println("\n*** Invalid Selection - Try again");
                 break;
         }
         return true;
@@ -62,28 +64,39 @@ public class GoldView extends View {
         do {
             //Display Math
             MathControl math = new MathControl();
-            System.out.println(math.makeMath(operator));
+            this.console.println(math.makeMath(operator));
 
             //Get Input
-            String userAnswer = this.getMathInput();
+            String userAnswer = null;
+            try {
+                userAnswer = this.getMathInput();
+            } catch (IOException ex) {
+                ErrorView.display(this.getClass().getName(),
+                                    "Error reading input: " + ex.getMessage());
+            }
 
             //Do Action
             if (math.verifyMath(userAnswer)) {
                 countCorrect++;
                 lastGoldEarned = GoldControl.correctAnswer(countCorrect, lastGoldEarned);
             } else {
-                System.out.println("\nWrong Answer");
+                ErrorView.display(this.getClass().getName(),"\nWrong Answer");
                 countCorrect = 0;
                 lastGoldEarned = 0;
             }
 
-            //Does user want to continue?
-            userContinue = this.getContinueInput();
+            try {
+                //Does user want to continue?
+                userContinue = this.getContinueInput();
+            } catch (IOException ex) {
+                ErrorView.display(this.getClass().getName(),
+                                    "Error reading input: " + ex.getMessage());
+            }
 
         } while (userContinue);
     }
     
-    private String getMathInput() {
+    private String getMathInput() throws IOException {
         boolean valid = false;
         String selection = null;
         
@@ -96,12 +109,12 @@ public class GoldView extends View {
         return selection;
     }
 
-    private boolean getContinueInput() {
+    private boolean getContinueInput() throws IOException {
         boolean valid = false;
         String selection = null;
         
         while(!valid) {
-            System.out.println("Do you want to continue? (Y/N)");
+            this.console.println("Do you want to continue? (Y/N)");
             
             selection = this.keyboard.readLine();
             selection = selection.trim();
@@ -110,7 +123,7 @@ public class GoldView extends View {
             if ("Y".equals(selection) || "N".equals(selection)){
                 break;
             } else {
-                System.out.println("Invalid Selection - Try again.");
+                ErrorView.display(this.getClass().getName(),"\nInvalid Selection - Try again.");
             }
         }
         return "Y".equals(selection);

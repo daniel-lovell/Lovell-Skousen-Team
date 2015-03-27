@@ -34,18 +34,18 @@ public class SkillsView extends View{
             case 'E': 
                 break;
             default: // 
-                System.out.println("\n*** Invalid Selection - Try again");
+                ErrorView.display(this.getClass().getName(),"\n*** Invalid Selection - Try again");
                 break;
         }
         return true;
     }
 
     private void buildAttack() {
-        System.out.println("\n*** buildAttack() called");
+        this.console.println("\n*** buildAttack() called");
     }
 
     private void buildDefense() {
-        System.out.println("\n*** buildDefense() called");
+        this.console.println("\n*** buildDefense() called");
     }
     
 }

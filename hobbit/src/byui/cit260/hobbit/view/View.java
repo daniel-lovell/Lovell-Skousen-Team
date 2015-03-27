@@ -3,8 +3,8 @@ package byui.cit260.hobbit.view;
 
 import hobbit.Hobbit;
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Scanner;
 
 
 public abstract class View implements ViewInterface{
@@ -31,7 +31,7 @@ public abstract class View implements ViewInterface{
         String value;
         
         do {
-            System.out.println(this.promptMessage);
+            this.console.println(this.promptMessage);
             value = this.getInput();
             this.doAction(value);
         } while (!value.equals("E"));
@@ -43,13 +43,18 @@ public abstract class View implements ViewInterface{
         String selection = null;
     
         while (!valid) {
-            System.out.println("\t\nEnter your selection below:");
+            this.console.println("\t\nEnter your selection below:");
             
-            selection = this.keyboard.readLine();
+            try {
+                selection = this.keyboard.readLine();
+            } catch (IOException ex) {
+                ErrorView.display(this.getClass().getName(),
+                                    "Error reading input: " + ex.getMessage());
+            }
             selection = selection.trim();
             
             if(selection.length() < 1){ //blank value entered
-                System.out.println("\n*** Invalid Selection *** Try again");
+                ErrorView.display(this.getClass().getName(),"\n*** Invalid Selection *** Try again");
                 continue;
             }
             break;

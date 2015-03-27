@@ -16,29 +16,6 @@ public class SuppliesView extends View {
             + "\n-----------------------------------------------------");
     }
     
-    /*
-    private final String SWORD = "\n"
-        + "\n-----------------------------------------------------"
-        + "\n| Sword                                        |"
-        + "\n-----------------------------------------------------"
-        + "\n Purchase a sword to increase your attack and fight the dragon."
-        + "\n-----------------------------------------------------";
-    
-    private final String SHIELD = "\n"
-        + "\n-----------------------------------------------------"
-        + "\n| Shield                                        |"
-        + "\n-----------------------------------------------------"
-        + "\n Purchase a shield to increase your defense."
-        + "\n-----------------------------------------------------";
-    
-    private final String GOLDPOUCH = "\n"
-        + "\n-----------------------------------------------------"
-        + "\n| Gold Pouch                                     |"
-        + "\n-----------------------------------------------------"
-        + "\n Buy a pouch to store more gold."
-        + "\n-----------------------------------------------------";
-    */
-    
     @Override
     public boolean doAction(Object obj){
         
@@ -50,35 +27,32 @@ public class SuppliesView extends View {
         switch (choice) {
             case 'S': // obtain sword.
                 this.obtainSword();
-                //System.out.println(SWORD);
                 break;
             case 'D': // obtain shield
                 this.obtainShield();
-                //System.out.println(SHIELD);
                 break;
             case 'G': // obtain gold pouch
                 this.obtainGoldPouch();
-                //System.out.println(GOLDPOUCH);
                 break;
             case 'E': // Exit the store
                 break;
             default: 
-                System.out.println("\n*** Invalid Selection - Try again");
+                ErrorView.display(this.getClass().getName(),"\n*** Invalid Selection - Try again");
                 break;
             }
         return true;
     }
 
     private void obtainSword() {
-        System.out.println("*** obtainSword function called ***");    
+        this.console.println("*** obtainSword function called ***");    
     }
 
     private void obtainShield() {
-        System.out.println("*** obtainShield function called ***");
+        this.console.println("*** obtainShield function called ***");
     }
 
     private void obtainGoldPouch() {
-        System.out.println("*** obtainGoldPouch function called ***");
+        this.console.println("*** obtainGoldPouch function called ***");
     }
 
 }

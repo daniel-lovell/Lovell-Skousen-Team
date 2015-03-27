@@ -64,23 +64,23 @@ public class HelpMenuView extends View {
 
         switch (choice) {
             case 'G': // get objective.
-                System.out.println(OBJECTIVE);
+                this.console.println(OBJECTIVE);
                 break;
             case 'D': // obtaining gold
-                System.out.println(GOLD);
+                this.console.println(GOLD);
                 break;
             case 'S': // obtaining supplies
-                System.out.println(SUPPLIES);
+                this.console.println(SUPPLIES);
                 break;
             case 'T': // develop experience
-                System.out.println(EXPERIENCE);
+                this.console.println(EXPERIENCE);
                 break;
             case 'F': // combat for fighting the dragon
-                System.out.println(COMBAT);
+                this.console.println(COMBAT);
             case 'E': // Exit the help menu
                 break;
             default: 
-                System.out.println("\n*** Invalid Selection - Try again");
+                ErrorView.display(this.getClass().getName(),"\n*** Invalid Selection - Try again");
                 break;
         }
         return true;

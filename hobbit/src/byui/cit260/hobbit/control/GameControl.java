@@ -14,8 +14,6 @@ import byui.cit260.hobbit.model.Player;
 import byui.cit260.hobbit.model.Scene;
 import byui.cit260.hobbit.model.SceneType;
 import hobbit.Hobbit;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 
 public class GameControl {

@@ -3,10 +3,16 @@ package byui.cit260.hobbit.view;
 
 import byui.cit260.hobbit.control.ProgramControl;
 import byui.cit260.hobbit.model.Player;
-import java.util.Scanner;
+import hobbit.Hobbit;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.PrintWriter;
 
 
 public class StartProgramView {
+    
+    BufferedReader keyboard = Hobbit.getInFile();
+    PrintWriter console = Hobbit.getOutFile();
     
     //Function that controls the start of the program
     public void startProgram() {
@@ -14,7 +20,13 @@ public class StartProgramView {
         this.displayBanner();
         
         //Create a new player object
-        String playersName = this.getPlayersName();
+        String playersName = null;
+        try {
+            playersName = this.getPlayersName();
+        } catch (IOException ex) {
+            ErrorView.display(this.getClass().getName(),
+                                    "Error reading input: " + ex.getMessage());
+        }
         Player player = ProgramControl.createPlayer(playersName);
         
         //Display a customized welcome message
@@ -30,34 +42,33 @@ public class StartProgramView {
     
     //Displays the welcome banner when program is started
     private void displayBanner() {
-        System.out.println("\n\n*********************************************************"); 
-        System.out.println("*                                                       *"
+        this.console.println("\n\n*********************************************************"); 
+        this.console.println("*                                                       *"
                 + "\n* Welcome to Hobbit!                                    *"
                 + "\n* In this game, you will accompany a little hobbit      *"
                 + "\n* on his journey in order to defeat the evil dragon.    *");
-        System.out.println("*                                                       *"
+        this.console.println("*                                                       *"
                 + "\n* Through your journey, you will dig for gold, in order *"
                 + "\n* to buy a shield and weapons to defeat the dragon.     *");
-        System.out.println("*                                                       *"
+        this.console.println("*                                                       *"
                 + "\n* Go forth adventurers and conquer the dragon!          *"
                 + "\n*                                                       *");
-        System.out.println("*********************************************************");
+        this.console.println("*********************************************************");
     }
         
     //gets and returns the player's name
-    private String getPlayersName() {
+    private String getPlayersName() throws IOException {
         boolean valid = false;      //indicates if the name has been retrieved
         String playersName = null;  //holds player's name
-        Scanner keyboard = new Scanner(System.in);
         
         while(!valid) { //Why check valid? It isn't modified anywhere. See comments below. -DL
-            System.out.println("Enter the player's name below:");
+            this.console.println("Enter the player's name below:");
             
-            playersName = keyboard.nextLine();
+            playersName = this.keyboard.readLine();
             playersName = playersName.trim();
             
             if (playersName.length()<2){
-                System.out.println("Invalid name - player name must be longer than one character");
+                ErrorView.display(this.getClass().getName(),"\nInvalid name - player name must be longer than one character");
                 continue; //Could we use valid = true instead? -DL
             }
             break; //If we used valid = true in the if statement above, would we need this? -DL
@@ -67,10 +78,10 @@ public class StartProgramView {
 
     //Display customized welcome message
     private void displayWelcomeMessage(Player player) {
-        System.out.println("\n\n=========================================");
-        System.out.println("\t Welcome " + player.getName() + ".");
-        System.out.println("\t Let your adventure begin!");
-        System.out.println("=========================================");
+        this.console.println("\n\n=========================================");
+        this.console.println("\t Welcome " + player.getName() + ".");
+        this.console.println("\t Let your adventure begin!");
+        this.console.println("=========================================");
     }
 
 }
