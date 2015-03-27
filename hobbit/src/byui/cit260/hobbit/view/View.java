@@ -1,11 +1,18 @@
 
 package byui.cit260.hobbit.view;
 
+import hobbit.Hobbit;
+import java.io.BufferedReader;
+import java.io.PrintWriter;
 import java.util.Scanner;
 
 
 public abstract class View implements ViewInterface{
+    
     private String promptMessage;
+    
+    protected final BufferedReader keyboard = Hobbit.getInFile();
+    protected final PrintWriter console = Hobbit.getOutFile();
     
     public String getPromptMessage() {
         return promptMessage;
@@ -32,14 +39,13 @@ public abstract class View implements ViewInterface{
     
     @Override
     public String getInput() {
-        Scanner keyboard = new Scanner(System.in);
         boolean valid = false;
         String selection = null;
     
         while (!valid) {
             System.out.println("\t\nEnter your selection below:");
             
-            selection = keyboard.nextLine();
+            selection = this.keyboard.readLine();
             selection = selection.trim();
             
             if(selection.length() < 1){ //blank value entered

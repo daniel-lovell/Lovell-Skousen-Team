@@ -86,10 +86,9 @@ public class GoldView extends View {
     private String getMathInput() {
         boolean valid = false;
         String selection = null;
-        Scanner keyboard = new Scanner(System.in);
         
         while(!valid) {
-            selection = keyboard.nextLine();
+            selection = this.keyboard.readLine();
             selection = selection.trim();
             
             break;
@@ -100,12 +99,11 @@ public class GoldView extends View {
     private boolean getContinueInput() {
         boolean valid = false;
         String selection = null;
-        Scanner keyboard = new Scanner(System.in);
         
         while(!valid) {
             System.out.println("Do you want to continue? (Y/N)");
             
-            selection = keyboard.nextLine();
+            selection = this.keyboard.readLine();
             selection = selection.trim();
             selection = selection.toUpperCase();
             
