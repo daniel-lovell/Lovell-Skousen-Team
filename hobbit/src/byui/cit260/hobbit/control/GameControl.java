@@ -1,6 +1,7 @@
 
 package byui.cit260.hobbit.control;
 
+import byui.cit260.hobbit.exceptions.GameControlException;
 import byui.cit260.hobbit.exceptions.MapControlException;
 import byui.cit260.hobbit.model.Constants;
 import byui.cit260.hobbit.model.Dragon;
@@ -14,6 +15,12 @@ import byui.cit260.hobbit.model.Player;
 import byui.cit260.hobbit.model.Scene;
 import byui.cit260.hobbit.model.SceneType;
 import hobbit.Hobbit;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
 
 public class GameControl {
@@ -96,5 +103,33 @@ public class GameControl {
             }
         }
         return inventoryList;
+    }
+
+    public static void saveGame(Game game, String filePath) throws GameControlException {
+        try (FileOutputStream fops = new FileOutputStream(filePath)) {
+            ObjectOutputStream output = new ObjectOutputStream(fops);
+            
+            output.writeObject(game);
+        } catch (IOException e) {
+            throw new GameControlException(e.getMessage());
+        }
+    }
+
+    public static void getSavedGame(String filePath) throws GameControlException {
+        
+        Game game = null;
+        
+        try (FileInputStream fops = new FileInputStream(filePath)) {
+            ObjectInputStream output = new ObjectInputStream(fops);
+            
+            game = (Game) output.readObject();
+        } catch (FileNotFoundException fnfe) {
+            throw new GameControlException(fnfe.getMessage());
+        } catch (Exception e) {
+            throw new GameControlException(e.getMessage());
+        }
+        
+        Hobbit.setCurrentGame(game);
+        
     }
 }

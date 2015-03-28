@@ -11,11 +11,10 @@ public class MainMenuView extends View {
             + "\n-----------------------------------------------------"
             + "\n| Main Menu                                         |"
             + "\n-----------------------------------------------------"
-            + "\nG - Start Game"
+            + "\nG - Load Saved Game"
             + "\nN - New Game"
             + "\nS - Save game"
             + "\nH - Help"
-            + "\nM - Map (Temporary Link to Map)"
             + "\nE - Exit"
             + "\n-----------------------------------------------------");
     }
@@ -31,16 +30,13 @@ public class MainMenuView extends View {
                 this.startNewGame();
                 break;
             case 'G': // get and start and existing game
-                this.startExistingGame();
+                this.startSavedGame();
                 break;
             case 'H': // display the help menu
                 this.displayHelpMenu();
                 break;
             case 'S': // save the current game
                 this.saveGame();
-                break;
-            case 'M':
-                this.displayMap();
                 break;
             case 'E': // Exit the game
                 break;
@@ -59,8 +55,17 @@ public class MainMenuView extends View {
         gameMenu.display();
     }
 
-    private void startExistingGame() {
-        this.console.println("*** startExistingGame function called ***");
+    private void startSavedGame() {
+        this.console.println("\n\nEnter the file path for the file where the game"
+                + "is saved: ");
+        
+        String filePath = this.getInput();
+        
+        try {
+            GameControl.getSavedGame(filePath);
+        } catch (Exception ex) {
+            ErrorView.display("MainMenuView", ex.getMessage());
+        }
     }
 
     private void displayHelpMenu() {
@@ -69,12 +74,15 @@ public class MainMenuView extends View {
     }
    
     private void saveGame() {
-        this.console.println("*** saveGame function called ***");
-    }
-
-    private void displayMap() {
-        MapView mapView = new MapView();
-        mapView.display();
+        this.console.println("\n\nEnter the file path for the file where the game"
+                + "is to be saved: ");
+        String filePath = this.getInput();
+        
+        try {
+            GameControl.saveGame(Hobbit.getCurrentGame(), filePath);
+        } catch (Exception ex) {
+            ErrorView.display("MainMenuView", ex.getMessage());
+        }
     }
 
 }
