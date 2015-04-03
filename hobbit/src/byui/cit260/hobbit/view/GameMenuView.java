@@ -2,6 +2,7 @@
 package byui.cit260.hobbit.view;
 
 import byui.cit260.hobbit.control.GameControl;
+import byui.cit260.hobbit.model.Actor;
 import byui.cit260.hobbit.model.InventoryItem;
 import byui.cit260.hobbit.model.Location;
 import hobbit.Hobbit;
@@ -62,6 +63,7 @@ public class GameMenuView extends View {
                                inventoryItem.getQuantityInStock());
         }
     }
+     
 
     private void displayMap() {
         //get the map locations from the current game
@@ -87,7 +89,19 @@ public class GameMenuView extends View {
     }
 
     private void viewActors() {
-        this.console.println("*** viewActors stub fuction called ***");
+        //this.console.println("*** viewActors stub fuction called ***");
+                Actor[] actors = GameControl.getSortedActorList();
+        
+        this.console.println("\nView Actor Locations");
+        this.console.println("Name" + "\t" +
+                            "Location" + "\t" );
+        
+        for (Actor actors : actor) {
+            
+            this.console.println(Actors.getActors() + "\t     " +
+                               actors.getDescription() + "\t  " +
+                               actors.getCoordinates());
+        }
     }
 
     private void viewGoldPouch() {

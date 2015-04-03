@@ -62,11 +62,19 @@ public class Game implements Serializable {
     public InventoryItem[] getInventory() {
         return inventory;
     }
-
+   
     public void setInventory(InventoryItem[] inventory) {
         this.inventory = inventory;
     }
 
+    public String[] getActor() {
+        return actors;
+    }
+
+    public void setActor (Actor[] actors){
+        this.actor = actor;
+    }
+            
     public Dragon getDragon() {
         return dragon;
     }

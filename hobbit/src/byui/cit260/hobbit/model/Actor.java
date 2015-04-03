@@ -14,6 +14,18 @@ public enum Actor implements Serializable {
     private final String description;
     private final Point coordinates;
 
+    public static Actor getMerchant() {
+        return Merchant;
+    }
+
+    public static Actor getWizard() {
+        return Wizard;
+    }
+
+    public static Actor getDwarf() {
+        return Dwarf;
+    }
+    
     Actor(String description) {
         this.description = description;
         coordinates = new Point(1,1);
@@ -26,6 +38,7 @@ public enum Actor implements Serializable {
     public Point getCoordinates() {
         return coordinates;
     }
+
 
 }
 

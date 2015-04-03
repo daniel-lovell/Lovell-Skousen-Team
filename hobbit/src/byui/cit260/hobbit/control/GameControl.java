@@ -3,6 +3,7 @@ package byui.cit260.hobbit.control;
 
 import byui.cit260.hobbit.exceptions.GameControlException;
 import byui.cit260.hobbit.exceptions.MapControlException;
+import byui.cit260.hobbit.model.Actor;
 import byui.cit260.hobbit.model.Constants;
 import byui.cit260.hobbit.model.Dragon;
 import byui.cit260.hobbit.model.Game;
@@ -84,7 +85,25 @@ public class GameControl {
         locations[2][2].setScene(scenes[SceneType.dragonScene.ordinal()]);
         
     }
-
+    public static Actor[] getSortedActor() {
+        Actor[] originalActorList = 
+                Hobbit.getCurrentGame().getActors();
+        
+        Actor[] actorsList = originalActorList.clone();
+        
+        Actor tempActor;
+        for (int i = 0; i < actorsList.length-1; i++) {
+            for (int j = 0; j < actorsList.length-1-i; j++) {
+                if (actorsList[j].getActor().
+                        compareToIgnoreCase(actorsList[j + 1].getActor()) > 0) {
+                    tempActor = actorsList[j];
+                    actorsList[j] = actorsList[j + 1];
+                    actorsList[j + 1] = tempActor;
+                }
+            }
+        }
+        return actorsList;
+    }
     public static InventoryItem[] getSortedInventoryList() {
         InventoryItem[] originalInventoryList = 
                Hobbit.getCurrentGame().getInventory();
@@ -132,4 +151,5 @@ public class GameControl {
         Hobbit.setCurrentGame(game);
         
     }
+
 }
