@@ -71,39 +71,6 @@ public class GameControl {
         
     }
 
-    public static void assignScenesToLocations(Map map, Scene[] scenes) {
-        Location[][] locations = map.getLocations();
-        
-        locations[0][0].setScene(scenes[SceneType.house.ordinal()]);
-        locations[0][1].setScene(scenes[SceneType.school.ordinal()]);
-        locations[0][2].setScene(scenes[SceneType.work.ordinal()]);
-        locations[1][0].setScene(scenes[SceneType.library.ordinal()]);
-        locations[1][1].setScene(scenes[SceneType.forest.ordinal()]);
-        locations[1][2].setScene(scenes[SceneType.goldScene.ordinal()]);
-        locations[2][0].setScene(scenes[SceneType.suppliesScene.ordinal()]);
-        locations[2][1].setScene(scenes[SceneType.skillsScene.ordinal()]);
-        locations[2][2].setScene(scenes[SceneType.dragonScene.ordinal()]);
-        
-    }
-    public static Actor[] getSortedActor() {
-        Actor[] originalActorList = 
-                Hobbit.getCurrentGame().getActors();
-        
-        Actor[] actorsList = originalActorList.clone();
-        
-        Actor tempActor;
-        for (int i = 0; i < actorsList.length-1; i++) {
-            for (int j = 0; j < actorsList.length-1-i; j++) {
-                if (actorsList[j].getActor().
-                        compareToIgnoreCase(actorsList[j + 1].getActor()) > 0) {
-                    tempActor = actorsList[j];
-                    actorsList[j] = actorsList[j + 1];
-                    actorsList[j + 1] = tempActor;
-                }
-            }
-        }
-        return actorsList;
-    }
     public static InventoryItem[] getSortedInventoryList() {
         InventoryItem[] originalInventoryList = 
                Hobbit.getCurrentGame().getInventory();
@@ -122,6 +89,42 @@ public class GameControl {
             }
         }
         return inventoryList;
+    }
+    
+        public static void assignScenesToLocations(Map map, Scene[] scenes) {
+        Location[][] locations = map.getLocations();
+        
+        locations[0][0].setScene(scenes[SceneType.house.ordinal()]);
+        locations[0][1].setScene(scenes[SceneType.school.ordinal()]);
+        locations[0][2].setScene(scenes[SceneType.work.ordinal()]);
+        locations[1][0].setScene(scenes[SceneType.library.ordinal()]);
+        locations[1][1].setScene(scenes[SceneType.forest.ordinal()]);
+        locations[1][2].setScene(scenes[SceneType.goldScene.ordinal()]);
+        locations[2][0].setScene(scenes[SceneType.suppliesScene.ordinal()]);
+        locations[2][1].setScene(scenes[SceneType.skillsScene.ordinal()]);
+        locations[2][2].setScene(scenes[SceneType.dragonScene.ordinal()]);
+        
+    }
+              
+        
+    public static Actor[] getSortedActorList() {
+        Actor[] originalActorList = 
+                Hobbit.getCurrentGame().getActors();
+        
+        Actor[] actorsList = originalActorList.clone();
+        
+        Actor tempActor;
+        for (int i = 0; i < actorsList.length-1; i++) {
+            for (int j = 0; j < actorsList.length-1-i; j++) {
+                if (actorsList[j].getNpc().
+                        compareToIgnoreCase(actorsList[j + 1].getNpc()) > 0) {
+                    tempActor = actorsList[j];
+                    actorsList[j] = actorsList[j + 1];
+                    actorsList[j + 1] = tempActor;
+                }
+            }
+        }
+        return actorsList;
     }
 
     public static void saveGame(Game game, String filePath) throws GameControlException {

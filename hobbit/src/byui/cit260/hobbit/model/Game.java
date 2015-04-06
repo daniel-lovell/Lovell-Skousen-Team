@@ -27,14 +27,6 @@ public class Game implements Serializable {
         this.player = player;
     }
 
-    public String[] getActors() {
-        return actors;
-    }
-
-    public void setActors(String[] actors) {
-        this.actors = actors;
-    }
-
     public Map getMap() {
         return map;
     }
@@ -67,12 +59,12 @@ public class Game implements Serializable {
         this.inventory = inventory;
     }
 
-    public String[] getActor() {
+        public String[] getActors() {
         return actors;
     }
 
-    public void setActor (Actor[] actors){
-        this.actor = actor;
+    public void setActors(String[] actors) {
+        this.actors = actors;
     }
             
     public Dragon getDragon() {

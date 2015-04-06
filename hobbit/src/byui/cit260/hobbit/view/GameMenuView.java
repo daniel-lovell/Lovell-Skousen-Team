@@ -107,5 +107,15 @@ public class GameMenuView extends View {
     private void viewGoldPouch() {
         this.console.println("*** viewGoldPouch stub fuction called ***");
     }
+
+    private static class Actors {
+
+        private static String getActors() {
+            throw new UnsupportedOperationException("Not supported yet."); 
+        }
+
+        public Actors() {
+        }
+    }
     
 }

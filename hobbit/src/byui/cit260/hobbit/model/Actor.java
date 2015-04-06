@@ -3,6 +3,7 @@ package byui.cit260.hobbit.model;
 
 import java.awt.Point;
 import java.io.Serializable;
+import java.util.Objects;
 
 
 public enum Actor implements Serializable {
@@ -14,6 +15,7 @@ public enum Actor implements Serializable {
     private final String description;
     private final Point coordinates;
 
+    
     public static Actor getMerchant() {
         return Merchant;
     }
@@ -39,7 +41,20 @@ public enum Actor implements Serializable {
         return coordinates;
     }
 
+    @Override
+    public String toString() {
+        return "Actor{" + "description=" + description + ", coordinates=" + coordinates + '}';
+    }
+
+    public String getNpc() {
+  
+        return npc;
+    } 
+    
+    String npc = null;
+    public void setNpc(String npc) {
+        this.npc = npc;
+    }
+
 
 }
-
-
