@@ -106,10 +106,9 @@ public class GameControl {
         
     }
               
-        
     public static Actor[] getSortedActorList() {
         Actor[] originalActorList = 
-                Hobbit.getCurrentGame().getActors();
+                Hobbit.getCurrentGame().getNpc();
         
         Actor[] actorsList = originalActorList.clone();
         

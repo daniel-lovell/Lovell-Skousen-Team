@@ -15,7 +15,11 @@ public enum Actor implements Serializable {
     private final String description;
     private final Point coordinates;
 
-    
+    public enum Actors {
+    merchant, 
+    wizard,
+    dwarf;
+}
     public static Actor getMerchant() {
         return Merchant;
     }

@@ -96,11 +96,14 @@ public class GameMenuView extends View {
         this.console.println("Name" + "\t" +
                             "Location" + "\t" );
         
-        for (Actor actors : actor) {
+        
+        Iterable<Actor> actor = null;  //I don't think this is actually correct
+        
+        for (Actor npcs : actor) {
             
             this.console.println(Actors.getActors() + "\t     " +
-                               actors.getDescription() + "\t  " +
-                               actors.getCoordinates());
+                               npcs.getDescription() + "\t  " +
+                               npcs.getCoordinates());
         }
     }
 

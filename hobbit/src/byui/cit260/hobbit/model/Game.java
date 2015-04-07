@@ -58,15 +58,16 @@ public class Game implements Serializable {
     public void setInventory(InventoryItem[] inventory) {
         this.inventory = inventory;
     }
-
-        public String[] getActors() {
-        return actors;
+    
+    public Actor[] getNpc() {
+        Actor[] actor = null; //don't think this is correct
+        return actor;
     }
-
+        
     public void setActors(String[] actors) {
         this.actors = actors;
     }
-            
+        
     public Dragon getDragon() {
         return dragon;
     }
@@ -113,6 +114,5 @@ public class Game implements Serializable {
         }
         return true;
     }
-    
-    
+      
 }
