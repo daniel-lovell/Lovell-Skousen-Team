@@ -9,6 +9,7 @@ import byui.cit260.hobbit.model.InventoryItem;
 import byui.cit260.hobbit.model.Item;
 import hobbit.Hobbit;
 
+
 public class MapView extends View {
     
     Game game = Hobbit.getCurrentGame();
@@ -83,7 +84,8 @@ public class MapView extends View {
             skillsView.display();
         }
     }
-
+    
+    
     private void displayDragon() {
         DragonView dragonView = new DragonView();
         dragonView.display();

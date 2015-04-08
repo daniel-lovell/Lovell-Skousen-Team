@@ -6,6 +6,7 @@ import byui.cit260.hobbit.model.Actor;
 import byui.cit260.hobbit.model.InventoryItem;
 import byui.cit260.hobbit.model.Location;
 import hobbit.Hobbit;
+import java.util.ArrayList;
 
 
 public class GameMenuView extends View {
@@ -87,7 +88,7 @@ public class GameMenuView extends View {
         }
             
     }
-
+    
     private void viewActors() {
         //this.console.println("*** viewActors stub fuction called ***");
                 Actor[] actors = GameControl.getSortedActorList();
@@ -97,6 +98,14 @@ public class GameMenuView extends View {
                             "Location" + "\t" );
         
         
+        ArrayList<String> ArrayList = new ArrayList<String>(3);{
+            ArrayList.add(0, "dwarf");
+            ArrayList.add(1, "merchant");
+            ArrayList.add(2, "wizard");
+            ArrayList.get(0);
+            ArrayList.get(1);
+            ArrayList.get(2);
+    }
         Iterable<Actor> actor = null;  //I don't think this is actually correct
         
         for (Actor npcs : actor) {

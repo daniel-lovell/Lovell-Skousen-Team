@@ -3,7 +3,8 @@ package byui.cit260.hobbit.model;
 
 import java.awt.Point;
 import java.io.Serializable;
-import java.util.Objects;
+import java.io.FileWriter;
+import java.io.IOException;
 
 
 public enum Actor implements Serializable {
@@ -14,12 +15,7 @@ public enum Actor implements Serializable {
     
     private final String description;
     private final Point coordinates;
-
-    public enum Actors {
-    merchant, 
-    wizard,
-    dwarf;
-}
+    
     public static Actor getMerchant() {
         return Merchant;
     }
@@ -30,6 +26,11 @@ public enum Actor implements Serializable {
 
     public static Actor getDwarf() {
         return Dwarf;
+    }
+
+    private Actor(String description, Point coordinates) {
+        this.description = description;
+        this.coordinates = coordinates;
     }
     
     Actor(String description) {
@@ -60,5 +61,20 @@ public enum Actor implements Serializable {
         this.npc = npc;
     }
 
-
+     
+    public static void actorsOutput(String[] args) throws IOException {
+        FileWriter out = null; 
+        out = new FileWriter("Report.txt"); 
+        out.write("\tList of Actors\n" 
+                + "Name\tLocation\n"
+                + "Dwarf\t" 
+                /*+ Dwarf's Coordinates*/
+                // +"\n"
+                + "Wizard\t"
+                /*+ Wizard's Coordinates*/
+                // +"\n"
+                + "Merchant\t");
+                // +"\n"
+                /*+ Merchant's Coordinates*/
+    } 
 }

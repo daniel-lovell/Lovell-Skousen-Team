@@ -5,6 +5,7 @@
  */
 package hobbit;
 
+import byui.cit260.hobbit.model.Actor;
 import byui.cit260.hobbit.model.Player;
 import byui.cit260.hobbit.model.Game;
 import byui.cit260.hobbit.view.StartProgramView;
@@ -28,6 +29,7 @@ public class Hobbit {
     private static PrintWriter logFile = null;
    
     public static void main(String[] args) {
+ 
         try {
             // open character stream files for input and output
             Hobbit.inFile = new BufferedReader(new InputStreamReader(System.in));

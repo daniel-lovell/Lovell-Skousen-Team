@@ -2,6 +2,7 @@
 package byui.cit260.hobbit.view;
 
 import byui.cit260.hobbit.control.ProgramControl;
+import byui.cit260.hobbit.model.Actor;
 import byui.cit260.hobbit.model.Player;
 import hobbit.Hobbit;
 import java.io.BufferedReader;
@@ -18,7 +19,8 @@ public class StartProgramView {
     public void startProgram() {
         //Display the banner screen
         this.displayBanner();
-        
+        // Create the actors
+
         //Create a new player object
         String playersName = null;
         try {
