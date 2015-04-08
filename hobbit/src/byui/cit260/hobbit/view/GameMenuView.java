@@ -87,6 +87,9 @@ public class GameMenuView extends View {
             this.console.println("\n -------");
         }
             
+        MapView map = new MapView();
+        map.display();
+        
     }
     
     private void viewActors() {
