@@ -5,6 +5,8 @@ import byui.cit260.hobbit.control.DragonControl;
 import byui.cit260.hobbit.control.MathControl;
 import byui.cit260.hobbit.model.Dragon;
 import byui.cit260.hobbit.model.Game;
+import byui.cit260.hobbit.model.InventoryItem;
+import byui.cit260.hobbit.model.Item;
 import byui.cit260.hobbit.model.Player;
 import hobbit.Hobbit;
 import java.io.BufferedReader;
@@ -63,34 +65,33 @@ public class DragonView {
     public void display() {
         
         Game game = Hobbit.getCurrentGame();
-        //Sword sword = Hobbit.getSword();
-        //Shield shield = Hobbit.getShield();
+        InventoryItem[] inventory = game.getInventory();
+        InventoryItem sword = inventory[Item.sword.ordinal()];
+        InventoryItem shield = inventory[Item.shield.ordinal()];
         
         Player player = game.getPlayer();
         Dragon dragon = game.getDragon();
         DragonControl.initializeBattle(player, dragon);
-        //if (DragonControl.battleReady(sword, shield)) {
-            
+        if (DragonControl.battleReady(sword, shield)) {
+
             while (DragonControl.alive(player, dragon)) {
-            try {
-                this.doAction(player, dragon);
-            } catch (IOException ex) {
-                this.console.println("Input Error");
+                try {
+                    this.doAction(player, dragon);
+                } catch (IOException ex) {
+                    this.console.println("Input Error");
+                }
             }
-            }
-            
+
             if ("dragon".equals(DragonControl.winner(player, dragon))) {
                 this.console.println(DIE);
-                //DragonControl.die();
+                DragonControl.die(sword, shield);
             } else {
                 this.console.println(WIN);
-                //DragonControl.win();
             }
-            
-            
-        //} else {
-        //    this.console.println(NOT_READY);
-        //}
+
+        } else {
+            this.console.println(NOT_READY);
+        }
         
     }
 

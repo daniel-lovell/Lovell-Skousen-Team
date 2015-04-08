@@ -8,8 +8,6 @@ package byui.cit260.hobbit.view;
 import byui.cit260.hobbit.control.GoldControl;
 import byui.cit260.hobbit.control.MathControl;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 
 public class GoldView extends View {

@@ -6,6 +6,7 @@
 package byui.cit260.hobbit.control;
 
 import byui.cit260.hobbit.model.Dragon;
+import byui.cit260.hobbit.model.InventoryItem;
 import byui.cit260.hobbit.model.Player;
 
 
@@ -64,6 +65,17 @@ public class DragonControl {
     static Dragon createDragon() {
         Dragon dragon = new Dragon();
         return dragon;
+    }
+
+    public static boolean battleReady(InventoryItem sword, InventoryItem shield) {
+        boolean swordReady = (sword.getExperiencePoints()) / 10 >= 1;
+        boolean shieldReady = (shield.getExperiencePoints()) / 10 >= 1;
+        return swordReady && shieldReady;
+    }
+
+    public static void die(InventoryItem sword, InventoryItem shield) {
+        sword.setExperiencePoints(3);
+        shield.setExperiencePoints(3);
     }
 
 }

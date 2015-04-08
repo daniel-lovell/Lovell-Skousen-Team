@@ -60,11 +60,15 @@ public class GameControl {
         InventoryItem sword = new InventoryItem();
         sword.setInventoryType("Sword");
         sword.setExperiencePoints(0);
+        sword.setQuantityInStock(0);
+        sword.setRequiredAmount(1);
         inventory[Item.sword.ordinal()] = sword;
         
         InventoryItem shield = new InventoryItem();
         shield.setInventoryType("Shield");
         shield.setExperiencePoints(0);
+        shield.setQuantityInStock(0);
+        shield.setRequiredAmount(1);
         inventory[Item.shield.ordinal()] = shield;
         
         return inventory;

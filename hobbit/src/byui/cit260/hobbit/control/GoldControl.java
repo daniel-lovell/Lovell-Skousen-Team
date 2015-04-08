@@ -27,7 +27,11 @@ public class GoldControl {
         
         //Update the gold in the pouch
         newGold = goldPouch.getAmount() + newGoldEarned;
-        goldPouch.setAmount(newGold);
+        if (newGold < goldPouch.getMaxAmount()) {
+            goldPouch.setAmount(newGold);
+        } else {
+            goldPouch.setAmount(goldPouch.getMaxAmount());
+        }
         
         //Return New Gold Earned
         return newGoldEarned;
@@ -53,8 +57,9 @@ public class GoldControl {
         return earnedGold;
     }
 
-    public static boolean pouchFull(GoldPouch goldPouch) {
-        
+    public static boolean pouchFull() {
+        Game game = Hobbit.getCurrentGame();
+        GoldPouch goldPouch = game.getGoldPouch();
         return goldPouch.getAmount() / goldPouch.getMaxAmount() >= 1;
     }
 

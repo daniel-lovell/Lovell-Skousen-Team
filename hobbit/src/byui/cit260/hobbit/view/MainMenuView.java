@@ -14,6 +14,7 @@ public class MainMenuView extends View {
             + "\nG - Load Saved Game"
             + "\nN - New Game"
             + "\nS - Save game"
+            + "\nR - Return to Game"
             + "\nH - Help"
             + "\nE - Exit"
             + "\n-----------------------------------------------------");
@@ -34,6 +35,9 @@ public class MainMenuView extends View {
                 break;
             case 'H': // display the help menu
                 this.displayHelpMenu();
+                break;
+            case 'R': // display the help menu
+                this.returnToGame();
                 break;
             case 'S': // save the current game
                 this.saveGame();
@@ -66,6 +70,10 @@ public class MainMenuView extends View {
         } catch (Exception ex) {
             ErrorView.display("MainMenuView", ex.getMessage());
         }
+        
+        GameMenuView gameMenu = new GameMenuView();
+        gameMenu.display();
+        
     }
 
     private void displayHelpMenu() {
@@ -82,6 +90,15 @@ public class MainMenuView extends View {
             GameControl.saveGame(Hobbit.getCurrentGame(), filePath);
         } catch (Exception ex) {
             ErrorView.display("MainMenuView", ex.getMessage());
+        }
+    }
+
+    private void returnToGame() {
+        if (Hobbit.getCurrentGame() != null) {
+            GameMenuView gameMenu = new GameMenuView();
+            gameMenu.display();
+        } else {
+            this.console.println("\nThere is no game loaded. Start a new game or load a saved one.");
         }
     }
 

@@ -13,9 +13,10 @@ import byui.cit260.hobbit.model.InventoryItem;
  */
 public class SkillsControl {
 
-    public static boolean skillMax(InventoryItem sword) {
-        System.out.println("skillMax() called");
-        return true;
+    public static boolean skillMax(InventoryItem item) {
+        
+        return (item.getExperiencePoints() / 10) >= 1;
+        
     }
     
 }

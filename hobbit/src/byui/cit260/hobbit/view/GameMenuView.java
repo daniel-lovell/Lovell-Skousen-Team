@@ -3,6 +3,7 @@ package byui.cit260.hobbit.view;
 
 import byui.cit260.hobbit.control.GameControl;
 import byui.cit260.hobbit.model.Actor;
+import byui.cit260.hobbit.model.GoldPouch;
 import byui.cit260.hobbit.model.InventoryItem;
 import byui.cit260.hobbit.model.Location;
 import hobbit.Hobbit;
@@ -16,20 +17,20 @@ public class GameMenuView extends View {
             + "\n-----------------------------------------------------"
             + "\n| Game Menu                                        |"
             + "\n-----------------------------------------------------"
-            + "\nI - Inventory"
-            + "\nM - Display Map"
-            + "\nA - Actors"
+            + "\nM - Explore Map"
             + "\nG - Gold Pouch"
+            + "\nI - Inventory"
+            + "\nA - Actors"
             + "\nE - Exit"
             + "\n-----------------------------------------------------");
     }
     
-        @Override
+    @Override
     public boolean doAction(Object obj) {
         String value = (String) obj;
         value = value.toUpperCase();
-        char choice = value.charAt(0); 
-        
+        char choice = value.charAt(0);
+
         switch (choice) {
             case 'M':
                 this.displayMap();
@@ -46,22 +47,20 @@ public class GameMenuView extends View {
             case 'E':
                 break;
         }
-            return true;
+        return true;
     }
+    
     public void viewInventory() {
-        
+
         InventoryItem[] inventory = GameControl.getSortedInventoryList();
-        
+
         this.console.println("\nList of Inventory Items");
-        this.console.println("Description" + "\t" +
-                           "Required" + "\t" + 
-                           "In Stock");
-        
+        this.console.println("Description\tIn Stock/Required\tExerience Points");
+
         for (InventoryItem inventoryItem : inventory) {
-            
-            this.console.println(inventoryItem.getInventoryType() + "\t     " +
-                               inventoryItem.getRequiredAmount() + "\t  " +
-                               inventoryItem.getQuantityInStock());
+            this.console.println(inventoryItem.getInventoryType() + "\t\t"
+                    + inventoryItem.getQuantityInStock() + "/" + inventoryItem.getRequiredAmount() + "\t\t\t"
+                    + inventoryItem.getExperiencePoints());
         }
     }
      
@@ -120,17 +119,22 @@ public class GameMenuView extends View {
     }
 
     private void viewGoldPouch() {
-        this.console.println("*** viewGoldPouch stub fuction called ***");
+        GoldPouch pouch = Hobbit.getCurrentGame().getGoldPouch();
+
+        this.console.println("\nYour Gold Pouch:");
+        this.console.println("Capacity" + "\t" + "Current Amount");
+        this.console.println(pouch.getMaxAmount() + "\t\t"
+                + pouch.getAmount());
     }
 
     private static class Actors {
 
         private static String getActors() {
-            throw new UnsupportedOperationException("Not supported yet."); 
+            throw new UnsupportedOperationException("Not supported yet.");
         }
 
         public Actors() {
         }
     }
-    
+
 }

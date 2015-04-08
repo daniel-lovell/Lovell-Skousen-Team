@@ -19,11 +19,11 @@ public class MapView extends View {
             + "\n-----------------------------------------------------"
             + "\n| Map Menu                                         |"
             + "\n-----------------------------------------------------"
-            + "\nH - Help"
-            + "\nD - Dragon"
             + "\nO - Gold"
             + "\nB - Store"
             + "\nS - Skills"
+            + "\nD - Dragon"
+            + "\nH - Help"
             + "\nE - Exit"
             + "\n-----------------------------------------------------");
     }
@@ -71,10 +71,10 @@ public class MapView extends View {
     
     private void displaySkills(){
         InventoryItem[] inventoryItems = game.getInventory();
-        InventoryItem sword = inventoryItems[Item.shield.ordinal()];
+        InventoryItem sword = inventoryItems[Item.sword.ordinal()];
         InventoryItem shield = inventoryItems[Item.shield.ordinal()];
         
-        if (SkillsControl.skillMax(sword)|| SkillsControl.skillMax(shield)) {
+        if (SkillsControl.skillMax(sword) && SkillsControl.skillMax(shield)) {
             this.console.println("\n"
                 + "\n!!!"
                 + "\n!!! Your attack and defense is maxed out. Time to fight the dragon!"
@@ -93,7 +93,7 @@ public class MapView extends View {
 
     private void displayGold() {
         GoldPouch goldPouch = game.getGoldPouch();
-        if (GoldControl.pouchFull(goldPouch)) {
+        if (GoldControl.pouchFull()) {
             this.console.println("\n"
                 + "\n!!!"
                 + "\n!!! You can't hold any more Gold."
