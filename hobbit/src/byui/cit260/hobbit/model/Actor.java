@@ -3,8 +3,6 @@ package byui.cit260.hobbit.model;
 
 import java.awt.Point;
 import java.io.Serializable;
-import java.io.FileWriter;
-import java.io.IOException;
 
 
 public enum Actor implements Serializable {

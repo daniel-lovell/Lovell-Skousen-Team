@@ -2,13 +2,10 @@
 package byui.cit260.hobbit.view;
 
 import byui.cit260.hobbit.control.GameControl;
-import byui.cit260.hobbit.model.Actor;
-import byui.cit260.hobbit.model.Game;
 import byui.cit260.hobbit.model.GoldPouch;
 import byui.cit260.hobbit.model.InventoryItem;
 import byui.cit260.hobbit.model.Location;
 import hobbit.Hobbit;
-import java.util.ArrayList;
 
 
 public class GameMenuView extends View {
