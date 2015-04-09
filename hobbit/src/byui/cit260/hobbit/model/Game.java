@@ -2,13 +2,14 @@
 package byui.cit260.hobbit.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 
 public class Game implements Serializable {
     
     private InventoryItem[] inventory;
     private Player player;
-    private String[] actors;
+    private ArrayList<Actor> actors;
     private Map map;
     private Dragon dragon;
     private GoldPouch goldPouch;
@@ -58,13 +59,12 @@ public class Game implements Serializable {
     public void setInventory(InventoryItem[] inventory) {
         this.inventory = inventory;
     }
-    
-    public Actor[] getNpc() {
-        Actor[] actor = null; //don't think this is correct
-        return actor;
+
+    public ArrayList<Actor> getActors() {
+        return actors;
     }
-        
-    public void setActors(String[] actors) {
+
+    public void setActors(ArrayList<Actor> actors) {
         this.actors = actors;
     }
         

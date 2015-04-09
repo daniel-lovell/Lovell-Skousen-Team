@@ -54,6 +54,14 @@ public class Location implements Serializable {
     public void setScene(Scene scene) {
         this.scene = scene;
     }
+
+    public ArrayList<Actor> getActors() {
+        return actors;
+    }
+
+    public void setActors(ArrayList<Actor> actors) {
+        this.actors = actors;
+    }
     
     @Override
     public String toString() {

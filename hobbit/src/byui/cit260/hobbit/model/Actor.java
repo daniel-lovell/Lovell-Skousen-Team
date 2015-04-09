@@ -9,6 +9,8 @@ import java.io.IOException;
 
 public enum Actor implements Serializable {
     
+    
+    
     Merchant("Sells equipment for Hobbits adventure."),
     Wizard("Blocks entrance to Dragon's lair."),
     Dwarf("Gold mine digger.");
@@ -28,53 +30,29 @@ public enum Actor implements Serializable {
         return Dwarf;
     }
 
-    private Actor(String description, Point coordinates) {
+    private Actor(String description, Point coordinate) {
         this.description = description;
-        this.coordinates = coordinates;
+        this.coordinates = coordinate;
     }
     
     Actor(String description) {
         this.description = description;
-        coordinates = new Point(1,1);
+        coordinates = new Point(0,0);
     }
-        
-    public String getDescription(){
+
+    public String getDescription() {
         return description;
     }
-    
+
     public Point getCoordinates() {
         return coordinates;
     }
+        
 
     @Override
     public String toString() {
         return "Actor{" + "description=" + description + ", coordinates=" + coordinates + '}';
     }
-
-    public String getNpc() {
-  
-        return npc;
-    } 
-    
-    String npc = null;
-    public void setNpc(String npc) {
-        this.npc = npc;
-    }
-
      
-    public static void actorsOutput(String[] args) throws IOException {
-        FileWriter out = null; 
-        out = new FileWriter("Report.txt"); 
-        out.write("\tList of Actors\n" 
-                + "Name\tLocation\n"
-                + "Dwarf\t" 
-                /*+ Dwarf's Coordinates*/
-                // +"\n"
-                + "Wizard\t"
-                /*+ Wizard's Coordinates*/
-                // +"\n"
-                + "Merchant\t");
-                // +"\n"
-                /*+ Merchant's Coordinates*/
-    } 
+    
 }

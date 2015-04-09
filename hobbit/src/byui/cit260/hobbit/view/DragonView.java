@@ -2,13 +2,17 @@
 package byui.cit260.hobbit.view;
 
 import byui.cit260.hobbit.control.DragonControl;
+import byui.cit260.hobbit.control.MapControl;
 import byui.cit260.hobbit.control.MathControl;
+import byui.cit260.hobbit.exceptions.MapControlException;
+import byui.cit260.hobbit.model.Actor;
 import byui.cit260.hobbit.model.Dragon;
 import byui.cit260.hobbit.model.Game;
 import byui.cit260.hobbit.model.InventoryItem;
 import byui.cit260.hobbit.model.Item;
 import byui.cit260.hobbit.model.Player;
 import hobbit.Hobbit;
+import java.awt.Point;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -72,7 +76,22 @@ public class DragonView {
         Player player = game.getPlayer();
         Dragon dragon = game.getDragon();
         DragonControl.initializeBattle(player, dragon);
+        
+        Point dragonPoint = new Point(2,2);
+        
+        
         if (DragonControl.battleReady(sword, shield)) {
+            try {
+                MapControl.moveActorToLocation(Actor.Merchant, dragonPoint);
+                MapControl.moveActorToLocation(Actor.Dwarf, dragonPoint);
+            } catch (MapControlException ex) {
+                ErrorView.display(this.getClass().getName(),"\n*** Error Moving Actors");
+            }
+            
+            this.console.println("\n Your fellowship has joined you:");
+            this.console.println("Wizard is here.");
+            this.console.println("Dwarf is here.");
+            this.console.println("Merchant is here.");
 
             while (DragonControl.alive(player, dragon)) {
                 try {

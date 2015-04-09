@@ -5,7 +5,6 @@
  */
 package hobbit;
 
-import byui.cit260.hobbit.model.Actor;
 import byui.cit260.hobbit.model.Player;
 import byui.cit260.hobbit.model.Game;
 import byui.cit260.hobbit.view.StartProgramView;
@@ -47,9 +46,7 @@ public class Hobbit {
                                 "\nCause: " + te.getCause() +
                                 "\nMessage: " + te.getMessage());
             te.printStackTrace();
-        }
-        
-        finally {
+        } finally {
             try {
                 if (Hobbit.inFile != null) Hobbit.inFile.close();
                 if (Hobbit.outFile != null) Hobbit.outFile.close();

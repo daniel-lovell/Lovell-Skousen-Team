@@ -3,7 +3,6 @@ package byui.cit260.hobbit.control;
 
 import byui.cit260.hobbit.exceptions.GameControlException;
 import byui.cit260.hobbit.exceptions.MapControlException;
-import byui.cit260.hobbit.model.Actor;
 import byui.cit260.hobbit.model.Constants;
 import byui.cit260.hobbit.model.Dragon;
 import byui.cit260.hobbit.model.Game;
@@ -26,7 +25,7 @@ import java.io.ObjectOutputStream;
 
 public class GameControl {
     
-    public static void createNewGame(Player player){ //Where does the player come from? -DL
+    public static void createNewGame(Player player) throws MapControlException { //Where does the player come from? -DL
         
         Game game = new Game();
         Hobbit.setCurrentGame(game);
@@ -45,11 +44,9 @@ public class GameControl {
         GoldPouch goldPouch = GoldControl.createPouch();
         game.setGoldPouch(goldPouch);
         
-        try {
-            MapControl.moveActorsToStartingLocation(map);
-        } catch (MapControlException me) {
-            System.out.println(me.getMessage());
-        }
+        
+        MapControl.moveActorsToStartingLocation(map);
+        
     }
     
     public static InventoryItem[] createInventoryList(){
@@ -110,11 +107,13 @@ public class GameControl {
         
     }
               
-    public static Actor[] getSortedActorList() {
-        Actor[] originalActorList = 
-                Hobbit.getCurrentGame().getNpc();
+    /*
+    public static ArrayList<Actor> getSortedActorList() {
         
-        Actor[] actorsList = originalActorList.clone();
+        
+        ArrayList<Actor> originalActorList = Hobbit.getCurrentGame().getActors();
+        
+        ArrayList<Actor> actorsList = originalActorList.clone();
         
         Actor tempActor;
         for (int i = 0; i < actorsList.length-1; i++) {
@@ -129,6 +128,7 @@ public class GameControl {
         }
         return actorsList;
     }
+        */
 
     public static void saveGame(Game game, String filePath) throws GameControlException {
         try (FileOutputStream fops = new FileOutputStream(filePath)) {

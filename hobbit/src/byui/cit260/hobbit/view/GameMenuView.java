@@ -3,6 +3,7 @@ package byui.cit260.hobbit.view;
 
 import byui.cit260.hobbit.control.GameControl;
 import byui.cit260.hobbit.model.Actor;
+import byui.cit260.hobbit.model.Game;
 import byui.cit260.hobbit.model.GoldPouch;
 import byui.cit260.hobbit.model.InventoryItem;
 import byui.cit260.hobbit.model.Location;
@@ -20,7 +21,6 @@ public class GameMenuView extends View {
             + "\nM - Explore Map"
             + "\nG - Gold Pouch"
             + "\nI - Inventory"
-            + "\nA - Actors"
             + "\nE - Exit"
             + "\n-----------------------------------------------------");
     }
@@ -38,9 +38,9 @@ public class GameMenuView extends View {
             case 'I':
                 this.viewInventory();
                 break;
-            case 'A':
+            /*case 'A':
                 this.viewActors();
-                break;
+                break;*/
             case 'G':
                 this.viewGoldPouch();
                 break;
@@ -91,8 +91,13 @@ public class GameMenuView extends View {
         
     }
     
-    private void viewActors() {
-        //this.console.println("*** viewActors stub fuction called ***");
+    
+    /*private void viewActors() {
+        
+        Game game = Hobbit.getCurrentGame();
+        game.getActors();
+
+            //this.console.println("*** viewActors stub fuction called ***");
                 Actor[] actors = GameControl.getSortedActorList();
         
         this.console.println("\nView Actor Locations");
@@ -116,7 +121,8 @@ public class GameMenuView extends View {
                                npcs.getDescription() + "\t  " +
                                npcs.getCoordinates());
         }
-    }
+    }*/
+    
 
     private void viewGoldPouch() {
         GoldPouch pouch = Hobbit.getCurrentGame().getGoldPouch();

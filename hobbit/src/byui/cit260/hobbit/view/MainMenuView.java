@@ -2,6 +2,7 @@
 package byui.cit260.hobbit.view;
 
 import byui.cit260.hobbit.control.GameControl;
+import byui.cit260.hobbit.exceptions.MapControlException;
 import hobbit.Hobbit;
 
 public class MainMenuView extends View {
@@ -52,7 +53,11 @@ public class MainMenuView extends View {
     }
 
     private void startNewGame() {
-        GameControl.createNewGame(Hobbit.getPlayer());
+        try {
+            GameControl.createNewGame(Hobbit.getPlayer());
+        } catch (MapControlException ex) {
+            ErrorView.display(this.getClass().getName(),"\nError Creating Map");
+        }
         
         //display the game menu
         GameMenuView gameMenu = new GameMenuView();
