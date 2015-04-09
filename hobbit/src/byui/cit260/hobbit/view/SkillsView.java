@@ -64,10 +64,9 @@ public class SkillsView extends View{
 
             if (selection.length() < 1) { //blank value entered
                 ErrorView.display(this.getClass().getName(),"\n*** Invalid Selection *** Try again");
-            } else if (!"2".equals(selection)) {
-                sword.setExperiencePoints(10);
             }
         } while (!"2".equals(selection));
+        sword.setExperiencePoints(10);
     }
 
     private void buildDefense() {
@@ -85,10 +84,10 @@ public class SkillsView extends View{
 
             if (selection.length() < 1) { //blank value entered
                 ErrorView.display(this.getClass().getName(),"\n*** Invalid Selection *** Try again");
-            } else if (!"2".equals(selection)) {
-                shield.setExperiencePoints(10);
             }
+            
         } while (!"2".equals(selection));
+        shield.setExperiencePoints(10);
     }
     
 }
